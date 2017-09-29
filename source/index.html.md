@@ -17,7 +17,7 @@ includes:
 search: true
 ---
 
-# Introduction
+# Введение
 
 Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
 
@@ -25,7 +25,7 @@ We have language bindings in Shell, Ruby, and Python! You can view code examples
 
 This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
-# Authentication
+# Авторизация
 
 > To authorize, use this code:
 
@@ -206,7 +206,7 @@ api.kittens.delete(2)
 ```shell
 curl "http://example.com/api/kittens/2"
   -X DELETE
-  -H "Authorization: meowmeowmeow"
+  -H "Проверка: тест"
 ```
 
 ```javascript
