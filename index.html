@@ -272,10 +272,10 @@
                   <li>
                     <a href="#-27" class="toc-h2 toc-link" data-title="Информационные сообщения">Получения статусов договоров (сделок)</a>
                   </li>
+                  <li>
+                    <a href="#-31" class="toc-h2 toc-link" data-title="Информационные сообщения">Получения всех номеров договоров (сделок) по одному клиенту</a>
+                  </li>
               </ul>
-          </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </div>
         <ul class="toc-footer">
@@ -612,13 +612,7 @@ Content-Type: application/json
     </span><span class="s2">"Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"506712"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"СообщениеОбОшибке"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight plaintext"><code>где:
-
-- IDClient - код заемщика
-- IDDeal - номер заявки (договора)
-- Code - код АСП
-- СообщениеОбОшибке - в случае, если будет ошибка, сюда передается информация о ней
-</code></pre>
+</span></code></pre>
 <p>Данный запрос позволяет получить код АСП (аналог собсвенаручной подписи) с целью его отправки клиенту в виде СМС или вывода на сайте для подписания договора.</p>
 <h3 id='http-3'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/dealsign/code/&lt;Паспорт&gt;/&lt;IDDeal&gt;</code></p>
@@ -1145,64 +1139,154 @@ Content-Type: application/json
 
     </span><span class="s2">"КодОтвета"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-</span><span class="err">Данный</span><span class="w"> </span><span class="err">запрос</span><span class="w"> </span><span class="err">позволяет</span><span class="w"> </span><span class="err">получить</span><span class="w"> </span><span class="err">информацию</span><span class="w"> </span><span class="err">о</span><span class="w"> </span><span class="err">статусе</span><span class="w"> </span><span class="err">договора</span><span class="w"> </span><span class="err">(сделки)</span><span class="w"> </span><span class="err">по</span><span class="w"> </span><span class="err">ее</span><span class="w"> </span><span class="err">номеру.</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">HTTP-запрос</span><span class="w">
-
-</span><span class="err">`POST</span><span class="w"> </span><span class="err">http</span><span class="p">:</span><span class="err">//&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/statusdeal`</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">Параметры</span><span class="w"> </span><span class="err">запроса</span><span class="w">
-
-</span><span class="err">Параметр</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Описание</span><span class="w">
-</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
-</span><span class="err">АдресСервера</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Адрес</span><span class="w"> </span><span class="err">сервера</span><span class="p">,</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">котором</span><span class="w"> </span><span class="err">опубликован</span><span class="w"> </span><span class="err">веб-сервис</span><span class="w">
-</span><span class="err">КаталогОпубликованногоHTTPСервиса</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Каталог</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">папке</span><span class="w"> </span><span class="err">wwwroot</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">опубликованным</span><span class="w"> </span><span class="err">сервисом</span><span class="w">
-</span><span class="err">IDDeal</span><span class="w"> </span><span class="err">(n)</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Номер</span><span class="w"> </span><span class="err">договора</span><span class="w"> </span><span class="err">займа</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">Возвращаемые</span><span class="w"> </span><span class="err">значения</span><span class="w">
-
-</span><span class="err">Параметр</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Описание</span><span class="w">
-</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
-</span><span class="err">НомерСделки</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Номер</span><span class="w"> </span><span class="err">договора</span><span class="w"> </span><span class="err">займа</span><span class="w">
-</span><span class="err">ДатаСделки</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Дата</span><span class="w"> </span><span class="err">договора</span><span class="w"> </span><span class="err">займа</span><span class="w">
-</span><span class="err">Статус</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Статус</span><span class="w"> </span><span class="err">договора</span><span class="w"> </span><span class="err">займа</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">Список</span><span class="w"> </span><span class="err">статусов</span><span class="w">
-
-</span><span class="err">Статус</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Описание</span><span class="w">
-</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
-</span><span class="err">Новый</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Заведена</span><span class="w"> </span><span class="err">заявка</span><span class="p">,</span><span class="w"> </span><span class="err">новый</span><span class="w"> </span><span class="err">займ</span><span class="w">
-</span><span class="err">На</span><span class="w"> </span><span class="err">рассмотрении</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Займ</span><span class="w"> </span><span class="err">находится</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">рассмотрении</span><span class="w">
-</span><span class="err">Одобрен</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">По</span><span class="w"> </span><span class="err">займу</span><span class="w"> </span><span class="err">приняли</span><span class="w"> </span><span class="err">положительное</span><span class="w"> </span><span class="err">решение</span><span class="w">
-</span><span class="err">Отказ</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">По</span><span class="w"> </span><span class="err">займу</span><span class="w"> </span><span class="err">приняли</span><span class="w"> </span><span class="err">отрицательное</span><span class="w"> </span><span class="err">решение</span><span class="w">
-</span><span class="err">Отменен</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Заемщик</span><span class="w"> </span><span class="err">отказался</span><span class="w"> </span><span class="err">от</span><span class="w"> </span><span class="err">займа</span><span class="w">
-</span><span class="err">Подписан</span><span class="w"> </span><span class="err">(дистанционно)</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Договор</span><span class="w"> </span><span class="err">подписан</span><span class="w"> </span><span class="err">дистанционно</span><span class="w">
-</span><span class="err">Ожидает</span><span class="w"> </span><span class="err">списания</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">р/с</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Ожидает</span><span class="w"> </span><span class="err">отправки</span><span class="w"> </span><span class="err">ден.средств</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">банковского</span><span class="w"> </span><span class="err">счета</span><span class="w"> </span><span class="err">организации</span><span class="w">
-</span><span class="err">Выдан</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Займ</span><span class="w"> </span><span class="err">выдан</span><span class="w">
-</span><span class="err">Внесен</span><span class="w"> </span><span class="err">аванс</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Внесен</span><span class="w"> </span><span class="err">аванс</span><span class="w"> </span><span class="err">раньше</span><span class="w"> </span><span class="err">даты</span><span class="w"> </span><span class="err">платежа</span><span class="w">
-</span><span class="err">Оплачен</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Займ</span><span class="w"> </span><span class="err">полностью</span><span class="w"> </span><span class="err">погашен</span><span class="w">
-</span><span class="err">У</span><span class="w"> </span><span class="err">коллектора</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Передан</span><span class="w"> </span><span class="err">коллектору</span><span class="w">
-</span><span class="err">На</span><span class="w"> </span><span class="err">текущем</span><span class="w"> </span><span class="err">контроле</span><span class="w"> </span><span class="err">у</span><span class="w"> </span><span class="err">коллектора</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Коллектор</span><span class="w"> </span><span class="err">контролирует</span><span class="w"> </span><span class="err">займ</span><span class="w">
-</span><span class="err">Готовится</span><span class="w"> </span><span class="err">выезд</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Коллектор</span><span class="w"> </span><span class="err">готовит</span><span class="w"> </span><span class="err">выезд</span><span class="w"> </span><span class="err">по</span><span class="w"> </span><span class="err">адресам</span><span class="w"> </span><span class="err">заемщика</span><span class="w">
-</span><span class="err">Признан</span><span class="w"> </span><span class="err">коллектором</span><span class="w"> </span><span class="err">как</span><span class="w"> </span><span class="err">безнадежный</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Коллектор</span><span class="w"> </span><span class="err">установил</span><span class="p">,</span><span class="w"> </span><span class="err">что</span><span class="w"> </span><span class="err">взыскать</span><span class="w"> </span><span class="err">займ</span><span class="w"> </span><span class="err">невозможно</span><span class="w">
-</span><span class="err">Ожидает</span><span class="w"> </span><span class="err">передачи</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">судебную</span><span class="w"> </span><span class="err">стадию</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Коллектор</span><span class="w"> </span><span class="err">определили</span><span class="w"> </span><span class="err">перспективу</span><span class="w"> </span><span class="err">взыскания</span><span class="w"> </span><span class="err">через</span><span class="w"> </span><span class="err">суд</span><span class="w">
-</span><span class="err">Передан</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">судебную</span><span class="w"> </span><span class="err">стадию</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Займ</span><span class="w"> </span><span class="err">передан</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">юридический</span><span class="w"> </span><span class="err">отдел</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">взыскание</span><span class="w"> </span><span class="err">через</span><span class="w"> </span><span class="err">суд</span><span class="w">
-</span><span class="err">Отправлена</span><span class="w"> </span><span class="err">претензия</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">По</span><span class="w"> </span><span class="err">займу</span><span class="w"> </span><span class="err">отправлена</span><span class="w"> </span><span class="err">претензия</span><span class="w">
-</span><span class="err">Оплачена</span><span class="w"> </span><span class="err">пошлина</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">По</span><span class="w"> </span><span class="err">займу</span><span class="w"> </span><span class="err">оплачена</span><span class="w"> </span><span class="err">пошлина</span><span class="w">
-</span><span class="err">В</span><span class="w"> </span><span class="err">суде</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">По</span><span class="w"> </span><span class="err">займу</span><span class="w"> </span><span class="err">отправлено</span><span class="w"> </span><span class="err">исковое</span><span class="w"> </span><span class="err">заявление</span><span class="w">
-</span><span class="err">Получен</span><span class="w"> </span><span class="err">исполнительный</span><span class="w"> </span><span class="err">лист</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Получили</span><span class="w"> </span><span class="err">исполнительный</span><span class="w"> </span><span class="err">лист</span><span class="w">
-</span><span class="err">Передан</span><span class="w"> </span><span class="err">судебному</span><span class="w"> </span><span class="err">приставу</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Исполнительный</span><span class="w"> </span><span class="err">лист</span><span class="w"> </span><span class="err">передан</span><span class="w"> </span><span class="err">судебному</span><span class="w"> </span><span class="err">приставу</span><span class="w">
-</span><span class="err">Продан</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Займ</span><span class="w"> </span><span class="err">продан</span><span class="w">
-</span><span class="err">Списан</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Займ</span><span class="w"> </span><span class="err">списан</span><span class="w">
-
-</span><span class="err">##</span><span class="w"> </span><span class="err">Получения</span><span class="w"> </span><span class="err">всех</span><span class="w"> </span><span class="err">номеров</span><span class="w"> </span><span class="err">договоров</span><span class="w"> </span><span class="err">(сделок)</span><span class="w"> </span><span class="err">по</span><span class="w"> </span><span class="err">одному</span><span class="w"> </span><span class="err">клиенту</span><span class="w">
-
-</span><span class="err">```HTTP</span><span class="w">
-</span><span class="err">GET</span><span class="w"> </span><span class="err">http</span><span class="p">:</span><span class="err">//</span><span class="mf">192.168</span><span class="err">.</span><span class="mf">0.1</span><span class="err">/MeMFOWork/hs/PS/NumberDeals/</span><span class="mi">0808761223</span><span class="err">`</span><span class="w">
-</span><span class="err">User-Agent</span><span class="p">:</span><span class="w"> </span><span class="err">АдресСервера</span><span class="w">
-</span><span class="err">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="err">application/json</span><span class="w">
 </span></code></pre>
+<p>Данный запрос позволяет получить информацию о статусе договора (сделки) по ее номеру.</p>
+<h3 id='http-9'>HTTP-запрос</h3>
+<p><code>POST http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/statusdeal</code></p>
+<h3 id='-28'>Параметры запроса</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
+</tr>
+<tr>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
+</tr>
+<tr>
+<td>IDDeal (n)</td>
+<td>Номер договора займа</td>
+</tr>
+</tbody></table>
+<h3 id='-29'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>НомерСделки</td>
+<td>Номер договора займа</td>
+</tr>
+<tr>
+<td>ДатаСделки</td>
+<td>Дата договора займа</td>
+</tr>
+<tr>
+<td>Статус</td>
+<td>Статус договора займа</td>
+</tr>
+</tbody></table>
+<h3 id='-30'>Список статусов</h3>
+<table><thead>
+<tr>
+<th>Статус</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Новый</td>
+<td>Заведена заявка, новый займ</td>
+</tr>
+<tr>
+<td>На рассмотрении</td>
+<td>Займ находится на рассмотрении</td>
+</tr>
+<tr>
+<td>Одобрен</td>
+<td>По займу приняли положительное решение</td>
+</tr>
+<tr>
+<td>Отказ</td>
+<td>По займу приняли отрицательное решение</td>
+</tr>
+<tr>
+<td>Отменен</td>
+<td>Заемщик отказался от займа</td>
+</tr>
+<tr>
+<td>Подписан (дистанционно)</td>
+<td>Договор подписан дистанционно</td>
+</tr>
+<tr>
+<td>Ожидает списания с р/с</td>
+<td>Ожидает отправки ден.средств с банковского счета организации</td>
+</tr>
+<tr>
+<td>Выдан</td>
+<td>Займ выдан</td>
+</tr>
+<tr>
+<td>Внесен аванс</td>
+<td>Внесен аванс раньше даты платежа</td>
+</tr>
+<tr>
+<td>Оплачен</td>
+<td>Займ полностью погашен</td>
+</tr>
+<tr>
+<td>У коллектора</td>
+<td>Передан коллектору</td>
+</tr>
+<tr>
+<td>На текущем контроле у коллектора</td>
+<td>Коллектор контролирует займ</td>
+</tr>
+<tr>
+<td>Готовится выезд</td>
+<td>Коллектор готовит выезд по адресам заемщика</td>
+</tr>
+<tr>
+<td>Признан коллектором как безнадежный</td>
+<td>Коллектор установил, что взыскать займ невозможно</td>
+</tr>
+<tr>
+<td>Ожидает передачи на судебную стадию</td>
+<td>Коллектор определили перспективу взыскания через суд</td>
+</tr>
+<tr>
+<td>Передан на судебную стадию</td>
+<td>Займ передан в юридический отдел на взыскание через суд</td>
+</tr>
+<tr>
+<td>Отправлена претензия</td>
+<td>По займу отправлена претензия</td>
+</tr>
+<tr>
+<td>Оплачена пошлина</td>
+<td>По займу оплачена пошлина</td>
+</tr>
+<tr>
+<td>В суде</td>
+<td>По займу отправлено исковое заявление</td>
+</tr>
+<tr>
+<td>Получен исполнительный лист</td>
+<td>Получили исполнительный лист</td>
+</tr>
+<tr>
+<td>Передан судебному приставу</td>
+<td>Исполнительный лист передан судебному приставу</td>
+</tr>
+<tr>
+<td>Продан</td>
+<td>Займ продан</td>
+</tr>
+<tr>
+<td>Списан</td>
+<td>Займ списан</td>
+</tr>
+</tbody></table>
+<h2 id='-31'>Получения всех номеров договоров (сделок) по одному клиенту</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/PS/NumberDeals/0808761223`
+User-Agent: АдресСервера
+Content-Type: application/json
+</code></pre>
 <blockquote>
 <p>Данный запрос возвращает строку в формате JSON:</p>
 </blockquote>
@@ -1232,82 +1316,48 @@ Content-Type: application/json
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"СообщениеОбОшибке"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
-
-</span><span class="err">Данный</span><span class="w"> </span><span class="err">запрос</span><span class="w"> </span><span class="err">позволяет</span><span class="w"> </span><span class="err">получить</span><span class="w"> </span><span class="err">информацию</span><span class="w"> </span><span class="err">о</span><span class="w"> </span><span class="err">всех</span><span class="w"> </span><span class="err">номерах</span><span class="w"> </span><span class="err">договоров</span><span class="w"> </span><span class="err">(сделкок).</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">HTTP-запрос</span><span class="w">
-
-</span><span class="err">`POST</span><span class="w"> </span><span class="err">http</span><span class="p">:</span><span class="err">//&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/PS/NumberDeals/&lt;Паспорт&gt;`</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">Параметры</span><span class="w"> </span><span class="err">запроса</span><span class="w">
-
-</span><span class="err">Параметр</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Описание</span><span class="w">
-</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
-</span><span class="err">АдресСервера</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Адрес</span><span class="w"> </span><span class="err">сервера</span><span class="p">,</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">котором</span><span class="w"> </span><span class="err">опубликован</span><span class="w"> </span><span class="err">веб-сервис</span><span class="w">
-</span><span class="err">КаталогОпубликованногоHTTPСервиса</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Каталог</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">папке</span><span class="w"> </span><span class="err">wwwroot</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">опубликованным</span><span class="w"> </span><span class="err">сервисом</span><span class="w">
-</span><span class="err">Паспорт</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Серия</span><span class="w"> </span><span class="err">и</span><span class="w"> </span><span class="err">номер</span><span class="w"> </span><span class="err">паспорта</span><span class="w"> </span><span class="err">без</span><span class="w"> </span><span class="err">пробелов</span><span class="w">
-
-</span><span class="err">###</span><span class="w"> </span><span class="err">Возвращаемые</span><span class="w"> </span><span class="err">значения</span><span class="w">
-
-</span><span class="err">Параметр</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Описание</span><span class="w">
-</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
-</span><span class="err">НомерДоговора</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Номер</span><span class="w"> </span><span class="err">договора</span><span class="w"> </span><span class="err">займа</span><span class="w">
-</span><span class="err">Оплачен</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Статус</span><span class="w"> </span><span class="err">оплаты</span><span class="w"> </span><span class="err">займа</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">или</span><span class="w"> </span><span class="kc">false</span><span class="w">
-</span><span class="err">СообщениеОбОшибке</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Описание</span><span class="w"> </span><span class="err">ошибки</span><span class="p">,</span><span class="w"> </span><span class="err">если</span><span class="w"> </span><span class="err">она</span><span class="w"> </span><span class="err">возникает</span><span class="w">
-</span></code></pre><h1 id='errors'>Errors</h1>
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
+</span></code></pre>
+<p>Данный запрос позволяет получить информацию о всех номерах договоров (сделкок).</p>
+<h3 id='http-10'>HTTP-запрос</h3>
+<p><code>POST http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/PS/NumberDeals/&lt;Паспорт&gt;</code></p>
+<h3 id='-32'>Параметры запроса</h3>
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request sucks.</td>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Паспорт</td>
+<td>Серия и номер паспорта без пробелов</td>
+</tr>
+</tbody></table>
+<h3 id='-33'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>НомерДоговора</td>
+<td>Номер договора займа</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Оплачен</td>
+<td>Статус оплаты займа: true или false</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>СообщениеОбОшибке</td>
+<td>Описание ошибки, если она возникает</td>
 </tr>
 </tbody></table>
 
