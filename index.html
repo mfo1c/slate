@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>API Моя МФО</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;HTTP&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -211,10 +211,7 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="HTTP">HTTP</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -225,19 +222,55 @@
             <a href="#" class="toc-h1 toc-link" data-title="Введение">Введение</a>
           </li>
           <li>
-            <a href="#-2" class="toc-h1 toc-link" data-title="Авторизация">Авторизация</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#-2" class="toc-h1 toc-link" data-title="Публикация веб-сервисов">Публикация веб-сервисов</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Kittens">Get All Kittens</a>
+                    <a href="#-3" class="toc-h2 toc-link" data-title="Публикация веб-сервисов">При работе на собственном сервере</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Kittens">Get a Specific Kitten</a>
+                    <a href="#quot-quot" class="toc-h2 toc-link" data-title="Публикация веб-сервисов">При работе через "Сервис Клауд"</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#-4" class="toc-h1 toc-link" data-title="Выдача займов">Выдача займов</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#-5" class="toc-h2 toc-link" data-title="Выдача займов">Загрузка заявок</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Kittens">Delete a Specific Kitten</a>
+                    <a href="#quot-pdf-quot" class="toc-h2 toc-link" data-title="Выдача займов">Отправка договора в формате "pdf" (без подписи)</a>
+                  </li>
+                  <li>
+                    <a href="#quot-quot-2" class="toc-h2 toc-link" data-title="Выдача займов">Запрос на получение кода АСП (аналога собсвенаручной подписи) из "Моя МФО"</a>
+                  </li>
+                  <li>
+                    <a href="#quot-pdf-quot-2" class="toc-h2 toc-link" data-title="Выдача займов">Отправка полученного от клиента кода АСП и возврат подписанного договора в формате "pdf"</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#-15" class="toc-h1 toc-link" data-title="Прием платежей">Прием платежей</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#-16" class="toc-h2 toc-link" data-title="Прием платежей">Получение сводных данных о сумме текущей задолженности по конкретному договору для вывода в личном кабинете</a>
+                  </li>
+                  <li>
+                    <a href="#-19" class="toc-h2 toc-link" data-title="Прием платежей">Получение данных о задолженности при оплате через сайт (для эквайринга)</a>
+                  </li>
+                  <li>
+                    <a href="#quot-quot-3" class="toc-h2 toc-link" data-title="Прием платежей">Отражение в системе "Моя МФО" полученного на сайте платежа (эквайринг)</a>
+                  </li>
+                  <li>
+                    <a href="#quot-quot-qiwi" class="toc-h2 toc-link" data-title="Прием платежей">Отражение в системе "Моя МФО" полученного платежа через платежные системы: QIWI, Золотая корона, МКБ (Московский кредитный банк)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#-26" class="toc-h1 toc-link" data-title="Информационные сообщения">Информационные сообщения</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#-27" class="toc-h2 toc-link" data-title="Информационные сообщения">Получения статусов договоров (сделок)</a>
                   </li>
               </ul>
           </li>
@@ -246,193 +279,982 @@
           </li>
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
+            <li>ООО "Моя МФО".</li>
+            <li>Все права защищены.</li>
+            <li><a href='http://mfo1c.ru'>Перейти на сайт Моя МФО</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id=''>Введение</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='-2'>Авторизация</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>Данная документация создана с целью описания механизмов взаимодействия системы &quot;Моя МФО&quot; и сайта компании, которая является пользователем данного программного продукта.
+Данный API (программный интерфейс) позволяет реализовать различные схемы взаимодействия: загрузку заявок, выдачу займов и прием платежей.
+Чтобы начать использовать эти возможности нужно начать с публикации веб-сервисов.
+Далее вы найдете описание самих веби-сервисов с примерами.</p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Настройка веб-сервера и подключение http-сервисов, требуют определенного опыта, и не являются самыми простыми механизмами, поэтому при необходимости возможна помошь специалиста 1С.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h1 id='-2'>Публикация веб-сервисов</h1><h2 id='-3'>При работе на собственном сервере</h2>
+<p>На сервере, где требуется произвести публикацию веб-сервисов необходимо произвести установку веб сервера (MS IIS или Apache), после этого, к нему устанавливается плагин от 1С, который передает запросы пользователей на сервер 1С.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>То есть операции физически выполняет сервер 1С, а веб-сервер (веб-сервис) служит просто передающим звеном.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<p><b>Производим установку веб сервера 1С.</b></p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<p>Установим веб сервер Microsoft Information Services (IIS)
+Установку веб сервера можно произвести из Панели управления Windows (варианты):</p>
+
+<ul>
+<li>Установка и удаление программ/Компоненты Windows/IIS</li>
+<li>Program and features/Turn windows features on or off/Add features.</li>
+</ul>
+
+<p>В Windows 8 перейдите на закладку Roles, выберите Add Roles (откроется мастер).</p>
+
+<p>На соответствующих закладках мастера нужно выбрать:</p>
+
+<ul>
+<li>Web Server (IIS)</li>
+<li>Application Development/ISAPI Extensions.</li>
+</ul>
+
+<p><code>В других версиях Windows первая галочка может называться «Internet Information Services», вторая так же, или «Расширения ISAPI».</code></p>
+
+<p><b>Установим компоненты 1С:Предприятие (после IIS)</b></p>
+
+<p>Нужно проверить, что при установки платформы были установлены следующие компоненты:</p>
+
+<ul>
+<li>Адаптер Web-сервисов 1С:Предприятие</li>
+</ul>
+
+<p><b>Проведем настройку IIS (после установки 1С)</b></p>
+
+<p>Настройку можно проводить в «Диспетчере служб IIS (IIS manager)», который находится в Панели управления Windows/Администрирование.</p>
+
+<p>В ветке «Узлы (Web Sites)» находится веб-узел по-умолчанию, нажмите на него правой кнопкой и выберите «Добавить виртуальный каталог».
+Выделим курсором созданный каталог (левой кнопкой мыши), справа отобразятся различные его настройки. Выберите «Сопоставление обработчиков (Handler mappings)».</p>
+
+<p>Справа появятся доступные действия. Выберите «Добавить сопоставление сценария (Add script map)».</p>
+
+<p>Введите путь запроса «*», выберите исполняемый файл «wsisapi.dll» в каталоге bin соответствующей версии 1С:Предприятие, установленной на этом сервере (не забываем про права, если они у Вас специально ограничены).</p>
+
+<p>По кнопке «Ограничение запроса (Request Restrictions)» там же, необходимо установить разрешающую галочку. После создания этого обработчика, установите на него курсор мыши, выберите «Проверка подлинности (Edit handler permissions)», разрешите его выполнение (Execute). Если база файловая, необходимо дать доступ к папке базы.</p>
+
+<p>Далее правой кнопкой на созданный каталог, пункт «Преобразовать в приложение (Convert to Application)».</p>
+
+<p><b>Публикация веб-сервисов конкретной базы</b></p>
+
+<p>Зайдите в конфигуратор требуемой базы данных на этом сервере (компьютере).</p>
+
+<p>В меню Администрирование/Публикация на веб-сервере выберите:</p>
+
+<ul>
+<li>имя базы</li>
+<li>каталог (обычно это «C:\Intetpub\wwwroot\КаталогОпубликованногоHTTPСервиса\») </li>
+</ul>
+
+<p><code>КаталогОпубликованногоHTTPСервиса - можно назвать именем базы</code></p>
+
+<ul>
+<li>на вкладке http-сервисы проставьте все галки</li>
+</ul>
+
+<p>Нажмите кнопку «Опубликовать».</p>
+
+<p>В результате в требуемом каталоге должен появится файл с расширением VRD.</p>
+
+<p><code>Проверяем брандмауэр (фаервол), антивирус и фильтры трафика на блокировку доступа к веб-сервису</code></p>
+<h2 id='quot-quot'>При работе через &quot;Сервис Клауд&quot;</h2>
+<p>В случае, если вы работаете на сервере компании &quot;Сервис Клауд&quot;, нужно произвести ряд действий:</p>
+
+<ol>
+<li><p>Добавить в информационную базу пользователя с таким же логином и паролем, как у одного из учетных записей для подключения к серверу &quot;Сервис Клауд&quot;.
+Именно под этим пользователем будет происходить авторизация и выполнение веб-сервисов.</p></li>
+<li><p>Написать в службу технической поддержки запрос о публикации всех веб-сервисов вашей рабочей информационной базы. Путь к базе или название нужно указать, чтобы они поняли о какой базе идет речь.</p></li>
+<li><p>В случае, если специалисты тех.поддержки опубликуют веб-сервисы, уточнить у них пути к веб-сервисам, если они не предоставят их в письме-уведомлении.</p></li>
+</ol>
+<h1 id='-4'>Выдача займов</h1><h2 id='-5'>Загрузка заявок</h2><pre class="highlight plaintext"><code>POST http://АдресСервера/КаталогОпубликованногоHTTPСервиса/hs/Request/
+User-Agent: АдресСервера
+Content-Type: application/json
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+  </span><span class="s2">"last_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Тестов"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Тест"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"middle_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Тестович"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"89117115544"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"birthday"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-05"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"test88@mail.ru"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"15000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"period"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-20"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"inn_number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"4445558877"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"id_sex"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Мужской"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"passport_series"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"45 10"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"passport_number"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"666666"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"passport_date_of_issue"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2008-01-09"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"birthplace"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"г. Хабаровск"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"passport_org"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ОВД Центрального округа, гор. Хабаровска"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"passport_code"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"270-009"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"incoming"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"35000"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"work_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ОАО РЖД"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"experience"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"60"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"work_phone"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"88123839935"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"residential_region"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Забайкальский кр."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"residential_city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"г. Самара"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"residential_street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Афонина"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"residential_house"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"residential_building"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"residential_apartment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"62"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"match_addresses"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+  </span><span class="s2">"registrarion_region"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Санкт-Петербург"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registrarion_city"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Зеленогорск"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registrarion_street"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Порядковая"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registrarion_house"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registrarion_building"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"registrarion_apartment"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"58"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<blockquote>
+<p>Данный запрос возвращает строку в формате JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Заявка создана"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IDDeal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТСК000157"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IDClient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000019183"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>В случае ошибки запрос вернет:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Описание ошибки"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Данный запрос позволяет загружать заявки с сайта компании или других ресурсов (лидогенераторов)</p>
+<h3 id='http'>HTTP-запрос</h3>
+<p><code>POST http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/Request/</code></p>
+<h3 id='-6'>Параметры запроса</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
 </tr>
 <tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
+</tr>
+</tbody></table>
+<h3 id='-7'>Описание обязательных полей анкеты</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>Сумма займа</td>
+</tr>
+<tr>
+<td>period</td>
+<td>Дата возврата</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>Количество платежей (для займов с периодическим платежами)</td>
+</tr>
+<tr>
+<td>creditproduct</td>
+<td>Кредитный продукт</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>Фамилия</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>Имя</td>
+</tr>
+<tr>
+<td>middle_name</td>
+<td>Отчество</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>Телефон</td>
+</tr>
+<tr>
+<td>birthday</td>
+<td>Дата рождения</td>
+</tr>
+<tr>
+<td>passport_series</td>
+<td>Серия паспорта</td>
+</tr>
+<tr>
+<td>passport_number</td>
+<td>Номер паспорта</td>
 </tr>
 </tbody></table>
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+В системе предоставляется загрузка любых доступных полей и назначение им соответствующих тегов при передаче.
+Данный функционал настраивается в системе "Моя МФО" в разделе <b>Настройки "Моя МФО"\Общие\Обмен с сайтом\Онлайн-заявки</b>
 </aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='-8'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>result</td>
+<td>Результат, 1 - загружено успешно; 0 - не загружено</td>
+</tr>
+<tr>
+<td>description</td>
+<td>Описание</td>
+</tr>
+<tr>
+<td>IDDeal</td>
+<td>Номер заявки (договора)</td>
+</tr>
+<tr>
+<td>IDClient</td>
+<td>Код заемщика</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Проверка: тест"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<h2 id='quot-pdf-quot'>Отправка договора в формате &quot;pdf&quot; (без подписи)</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/dealinpdf/0808223433/1_000000001`
+User-Agent: АдресСервера
+Content-Type: application/json
 </code></pre>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Данный запрос возвращает строку в формате JSON:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+    </span><span class="s2">"IDClient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000005729"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IDDeal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JJJ000141"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"506712"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"СообщениеОбОшибке"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<p>Данный запрос позволяет получить заполненную даными клиента форму договора в формате pdf до подписания его клиентом, для вывода на сайте (в личном кабинете).</p>
+<h3 id='http-2'>HTTP-запрос</h3>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/dealinpdf/&lt;Паспорт&gt;/&lt;IDDeal&gt;</code></p>
+<h3 id='-9'>Параметры запроса</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
+<th>Параметр</th>
+<th>Описание</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
+</tr>
+<tr>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
+</tr>
+<tr>
+<td>Паспорт</td>
+<td>Серия и номер паспорта без пробелов</td>
+</tr>
+<tr>
+<td>IDDeal</td>
+<td>Номер договора займа</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
+<h3 id='-10'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>IDClient</td>
+<td>Код заемщика</td>
+</tr>
+<tr>
+<td>IDDeal</td>
+<td>Номер заявки (договора)</td>
+</tr>
+<tr>
+<td>Code</td>
+<td>Код АСП</td>
+</tr>
+<tr>
+<td>СообщениеОбОшибке</td>
+<td>Описание ошибки, если она возникает</td>
+</tr>
+</tbody></table>
+<h2 id='quot-quot-2'>Запрос на получение кода АСП (аналога собсвенаручной подписи) из &quot;Моя МФО&quot;</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/dealsign/code/0808223433/1_000000001`
+User-Agent: АдресСервера
+Content-Type: application/json
+</code></pre>
+<blockquote>
+<p>Данный запрос возвращает строку в формате JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"IDClient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000005729"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IDDeal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JJJ000141"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"506712"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"СообщениеОбОшибке"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><pre class="highlight plaintext"><code>где:
+
+- IDClient - код заемщика
+- IDDeal - номер заявки (договора)
+- Code - код АСП
+- СообщениеОбОшибке - в случае, если будет ошибка, сюда передается информация о ней
+</code></pre>
+<p>Данный запрос позволяет получить код АСП (аналог собсвенаручной подписи) с целью его отправки клиенту в виде СМС или вывода на сайте для подписания договора.</p>
+<h3 id='http-3'>HTTP-запрос</h3>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/dealsign/code/&lt;Паспорт&gt;/&lt;IDDeal&gt;</code></p>
+<h3 id='-11'>Параметры запроса</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
+</tr>
+<tr>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
+</tr>
+<tr>
+<td>Паспорт</td>
+<td>Серия и номер паспорта без пробелов</td>
+</tr>
+<tr>
+<td>IDDeal</td>
+<td>Номер договора займа</td>
+</tr>
+</tbody></table>
+<h3 id='-12'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>IDClient</td>
+<td>Код заемщика</td>
+</tr>
+<tr>
+<td>IDDeal</td>
+<td>Номер заявки (договора)</td>
+</tr>
+<tr>
+<td>Code</td>
+<td>Код АСП</td>
+</tr>
+<tr>
+<td>СообщениеОбОшибке</td>
+<td>Описание ошибки, если она возникает</td>
+</tr>
+</tbody></table>
+<h2 id='quot-pdf-quot-2'>Отправка полученного от клиента кода АСП и возврат подписанного договора в формате &quot;pdf&quot;</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/dealsign/codereview/0808223433/1_000000001/1233243454354366234`
+User-Agent: АдресСервера
+Content-Type: application/json
+</code></pre>
+<blockquote>
+<p>Данный запрос возвращает строку в формате JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"IDClient"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000005729"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"IDDeal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JJJ000141"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"506712"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"СообщениеОбОшибке"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Данный запрос позволяет отправить в базу &quot;Моя МФО&quot; код АСП (аналог собсвенаручной подписи), который клиент ввел на стороне сайта и в случае, если код введен верно вернуть подписанный данной АСП договор в формате pdf.
+В результате запроса статус займа меняется на &quot;Подисан (дистанционно)&quot;.</p>
+<h3 id='http-4'>HTTP-запрос</h3>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/dealsign/codereview/&lt;Паспорт&gt;/&lt;IDDeal&gt;/&lt;CodeSHA256&gt;</code></p>
+<h3 id='-13'>Параметры запроса</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
+</tr>
+<tr>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
+</tr>
+<tr>
+<td>Паспорт</td>
+<td>Серия и номер паспорта без пробелов</td>
+</tr>
+<tr>
+<td>IDDeal</td>
+<td>Номер договора займа</td>
+</tr>
+<tr>
+<td>CodeSHA256</td>
+<td>Строка: &quot;Паспорт + IDDeal + Код АСП&quot;, зашифрованная алгоритмом SHA256</td>
+</tr>
+</tbody></table>
+<h3 id='-14'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>IDClient</td>
+<td>Код заемщика</td>
+</tr>
+<tr>
+<td>IDDeal</td>
+<td>Номер заявки (договора)</td>
+</tr>
+<tr>
+<td>Code</td>
+<td>Код АСП</td>
+</tr>
+<tr>
+<td>СообщениеОбОшибке</td>
+<td>Описание ошибки, если она возникает</td>
+</tr>
+</tbody></table>
+<h1 id='-15'>Прием платежей</h1><h2 id='-16'>Получение сводных данных о сумме текущей задолженности по конкретному договору для вывода в личном кабинете</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/PS/deal/1_000000001/0808223433`
+User-Agent: АдресСервера
+Content-Type: application/json
+</code></pre>
+<blockquote>
+<p>Данный запрос возвращает строку в формате JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"НомерДоговора"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06042017.00001"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ОбщийДолгНаТекДату"</span><span class="p">:</span><span class="w"> </span><span class="mf">245592.68</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ОстатокОД"</span><span class="p">:</span><span class="w"> </span><span class="mi">79249</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"СуммаПроценты"</span><span class="p">:</span><span class="w"> </span><span class="mf">166343.68</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ДолгПоТекПлатежу"</span><span class="p">:</span><span class="w"> </span><span class="mi">70515</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ОстатокОДПоТекПлатежу"</span><span class="p">:</span><span class="w"> </span><span class="mi">1781</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"СуммаПроцентыПоТекПлатежу"</span><span class="p">:</span><span class="w"> </span><span class="mi">68734</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ДолгПросроченный"</span><span class="p">:</span><span class="w"> </span><span class="mi">70515</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"КоличествоДнейПросрочки"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ОстатокОДПросрочено"</span><span class="p">:</span><span class="w"> </span><span class="mi">1781</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"СуммаПроцентыПросрочено"</span><span class="p">:</span><span class="w"> </span><span class="mi">68734</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"СуммаШтрафы"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"СуммаПошлина"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"СуммаПрочиеПлатежи"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ОстатокНаСчете"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ТекущийГрафикПлатежей"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"НомерСтроки"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ДатаПлатежа"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-07- 06T00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаПлатежа"</span><span class="p">:</span><span class="w"> </span><span class="mi">70515</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаОД"</span><span class="p">:</span><span class="w"> </span><span class="mi">1781</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаПроцентов"</span><span class="p">:</span><span class="w"> </span><span class="mi">68734</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаПрочиеПлатежи"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ОстатокОД"</span><span class="p">:</span><span class="w"> </span><span class="mi">77468</span><span class="p">,</span><span class="w">
+
+        </span><span class="s2">"СуммаШтраф"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"НомерСтроки"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ДатаПлатежа"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-08- 06T00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаПлатежа"</span><span class="p">:</span><span class="w"> </span><span class="mi">270515</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаОД"</span><span class="p">:</span><span class="w"> </span><span class="mi">5573</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаПроцентов"</span><span class="p">:</span><span class="w"> </span><span class="mi">264942</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаПрочиеПлатежи"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ОстатокОД"</span><span class="p">:</span><span class="w"> </span><span class="mi">71895</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаШтраф"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"НомерСтроки"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ДатаПлатежа"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09- 06T00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаПлатежа"</span><span class="p">:</span><span class="w"> </span><span class="mi">170515</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаОД"</span><span class="p">:</span><span class="w"> </span><span class="mi">17439</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаПроцентов"</span><span class="p">:</span><span class="w"> </span><span class="mi">153076</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаПрочиеПлатежи"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ОстатокОД"</span><span class="p">:</span><span class="w"> </span><span class="mi">54456</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаШтраф"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"НомерСтроки"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ДатаПлатежа"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-10- 06T00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаПлатежа"</span><span class="p">:</span><span class="w"> </span><span class="mi">170402</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаОД"</span><span class="p">:</span><span class="w"> </span><span class="mi">54456</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаПроцентов"</span><span class="p">:</span><span class="w"> </span><span class="mi">115946</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаПрочиеПлатежи"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ОстатокОД"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаШтраф"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"Оплаты"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"НомерПриходника"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТСТ00000129"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ДатаОплаты"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06- 05T00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаОплаты"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ОнлайнОплата"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ОплатаНаРС"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"НомерПриходника"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТСТ00000141"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ДатаОплаты"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06- 08T00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"СуммаОплаты"</span><span class="p">:</span><span class="w"> </span><span class="mi">141030</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ОнлайнОплата"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ОплатаНаРС"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"СообщениеОбОшибке"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Данный запрос позволяет получить сводную информацию о текущих статьях задолженности, а так же текущий график платежей и историю внесенных оплат.</p>
+<h3 id='http-5'>HTTP-запрос</h3>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/PS/deal/&lt;IDDeal&gt;/&lt;Паспорт&gt;</code></p>
+<h3 id='-17'>Параметры запроса</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
+</tr>
+<tr>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
+</tr>
+<tr>
+<td>IDDeal</td>
+<td>Номер договора займа</td>
+</tr>
+<tr>
+<td>Паспорт</td>
+<td>Серия и номер паспорта без пробелов</td>
+</tr>
+</tbody></table>
+<h3 id='-18'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>СообщениеОбОшибке</td>
+<td>Описание ошибки, если она возникает</td>
+</tr>
+</tbody></table>
+<h2 id='-19'>Получение данных о задолженности при оплате через сайт (для эквайринга)</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/PS/deal/1_000000001/0808223433`
+User-Agent: АдресСервера
+Content-Type: application/json
+</code></pre>
+<blockquote>
+<p>Данный запрос возвращает строку в формате JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"НомерДоговора"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17062017.03.01"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ИмяОтчествоФ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Андрей Александрович К."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Телефон"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8968*****10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"ОбщийДолгНаТекДату"</span><span class="p">:</span><span class="w"> </span><span class="mf">17866.74</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"СообщениеОбОшибке"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Данный запрос позволяет получить информацию о сумме текущего платежа, а так же информацию для проверки заемщиком достоверности предоставленных сведений.
+Если на сайте имеется возможность приема платежей, перед перенаправлением клиента на форму ввода данных банковской карты система позволяет предоставить клиенту проверочную информацию,
+которая позволяет ему узнать сумму, необходимую для внесения, а так же убедиться, что данная сумма действительно относится к нему, поскольку выводится его номер телефона и ФИО.</p>
+<h3 id='http-6'>HTTP-запрос</h3>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/PS/dealforps/&lt;IDDeal&gt;/&lt;Паспорт&gt;</code></p>
+<h3 id='-20'>Параметры запроса</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
+</tr>
+<tr>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
+</tr>
+<tr>
+<td>IDDeal</td>
+<td>Номер договора займа</td>
+</tr>
+<tr>
+<td>Паспорт</td>
+<td>Серия и номер паспорта без пробелов</td>
+</tr>
+</tbody></table>
+<h3 id='-21'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>СообщениеОбОшибке</td>
+<td>Описание ошибки, если она возникает</td>
+</tr>
+</tbody></table>
+<h2 id='quot-quot-3'>Отражение в системе &quot;Моя МФО&quot; полученного на сайте платежа (эквайринг)</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/Payment/Site/&lt;IDPayServise&gt;/?command=pay&amp;txn_id=4431523121&amp;txn_date=20170825120133&amp;account=1_1000089&amp;sum=2200
+User-Agent: АдресСервера
+Content-Type: application/xml
+</code></pre>
+<blockquote>
+<p>Данный запрос возвращает строку в формате XML:</p>
+</blockquote>
+<pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;response&gt;</span>
+    <span class="nt">&lt;osmp_txn_id&gt;</span>4431523121<span class="nt">&lt;/osmp_txn_id&gt;</span>
+    <span class="nt">&lt;prv_txn&gt;</span>16286f65-9bc9-11e7-ae9f-000c2990aa10<span class="nt">&lt;/prv_txn&gt;</span>
+    <span class="nt">&lt;sum&gt;</span>2200<span class="nt">&lt;/sum&gt;</span>
+    <span class="nt">&lt;result&gt;</span>0<span class="nt">&lt;/result&gt;</span>
+<span class="nt">&lt;/response&gt;</span>
+</code></pre>
+<p>Данный запрос позволяет произвести отражение в системе платежа, который был осуществлен клиентом на сайте.</p>
+
+<aside class="notice">
+Данный запрос отправляет сайт после получения информации от платежного сервиса о внесенном платеже.
+</aside>
+<h3 id='http-7'>HTTP-запрос</h3>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/Payment/Site/&lt;IDPayServise&gt;/?command=&lt;Command&gt;&amp;txn_id=&lt;osmp_txn_id&gt;&amp;txn_date=&lt;DatePayment&gt;&amp;account=&lt;IDDeal&gt;&amp;sum=&lt;Sum&gt;</code></p>
+<h3 id='-22'>Параметры запроса</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
+</tr>
+<tr>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
+</tr>
+<tr>
+<td>IDPayServise</td>
+<td>Идентификатор платежного сервиса в системе &quot;Моя МФО&quot; (Настройки Моя МФО\Общие\Обмен с сайтом\Платежные сервисы)</td>
+</tr>
+<tr>
+<td>Command</td>
+<td>Команда для отражения в системе &quot;Моя МФО&quot;. Может принимать два значения: check - проверка возможности, pay - внесение оплаты</td>
+</tr>
+<tr>
+<td>osmp_txn_id</td>
+<td>Идентификатор платежа на стороне платежного сервиса</td>
+</tr>
+<tr>
+<td>DatePayment</td>
+<td>Дата платежа в формате &#39;yyyymmddhhmmss&#39;</td>
+</tr>
+<tr>
+<td>IDDeal</td>
+<td>Номер договора займа</td>
+</tr>
+<tr>
+<td>Sum</td>
+<td>Сумма платежа</td>
+</tr>
+</tbody></table>
+<h3 id='-23'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>osmp_txn_id</td>
+<td>Идентификатор платежа на стороне платежного сервиса</td>
+</tr>
+<tr>
+<td>prv_txn</td>
+<td>Идентификатор платежа в системе &quot;Моя МФО&quot;</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>Сумма платежа</td>
+</tr>
+<tr>
+<td>result</td>
+<td>Результат выполнения (0 - успешно; 1 - не успешно)</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>Описание ошибки</td>
+</tr>
+<tr>
+<td>СообщениеОбОшибке</td>
+<td>Описание ошибки, если она возникает</td>
+</tr>
+</tbody></table>
+<h2 id='quot-quot-qiwi'>Отражение в системе &quot;Моя МФО&quot; полученного платежа через платежные системы: QIWI, Золотая корона, МКБ (Московский кредитный банк)</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/Payment/QIWI/?command=pay&amp;txn_id=4431523121&amp;txn_date=20170825120133&amp;account=1_1000089&amp;sum=2200
+User-Agent: АдресСервера
+Content-Type: application/xml
+</code></pre>
+<blockquote>
+<p>Данный запрос возвращает строку в формате XML:</p>
+</blockquote>
+<pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;response&gt;</span>
+    <span class="nt">&lt;osmp_txn_id&gt;</span>4431523121<span class="nt">&lt;/osmp_txn_id&gt;</span>
+    <span class="nt">&lt;prv_txn&gt;</span>16286f65-9bc9-11e7-ae9f-000c2990aa10<span class="nt">&lt;/prv_txn&gt;</span>
+    <span class="nt">&lt;sum&gt;</span>2200<span class="nt">&lt;/sum&gt;</span>
+    <span class="nt">&lt;result&gt;</span>0<span class="nt">&lt;/result&gt;</span>
+<span class="nt">&lt;/response&gt;</span>
+</code></pre>
+<p>Данный запрос позволяет произвести отражение в системе платежа, который был осуществлен клиентом через платежный сервис.</p>
+
+<aside class="notice">
+Данный запрос отправляет непосредственно платежный сервис.
+</aside>
+<h3 id='http-8'>HTTP-запрос</h3>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/Payment/&lt;PayServise&gt;/?command=&lt;Command&gt;&amp;txn_id=&lt;osmp_txn_id&gt;&amp;txn_date=&lt;DatePayment&gt;&amp;account=&lt;IDDeal&gt;&amp;sum=&lt;Sum&gt;</code></p>
+<h3 id='-24'>Параметры запроса</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
+</tr>
+<tr>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
+</tr>
+<tr>
+<td>PayServise</td>
+<td>Название платежного сервиса: MKB, ZK, QIWI</td>
+</tr>
+<tr>
+<td>Command</td>
+<td>Команда для отражения в системе &quot;Моя МФО&quot;. Может принимать два значения: check - проверка возможности, pay - внесение оплаты</td>
+</tr>
+<tr>
+<td>osmp_txn_id</td>
+<td>Идентификатор платежа на стороне платежного сервиса</td>
+</tr>
+<tr>
+<td>DatePayment</td>
+<td>Дата платежа в формате &#39;yyyymmddhhmmss&#39;</td>
+</tr>
+<tr>
+<td>IDDeal</td>
+<td>Номер договора займа</td>
+</tr>
+<tr>
+<td>Sum</td>
+<td>Сумма платежа</td>
+</tr>
+</tbody></table>
+<h3 id='-25'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>osmp_txn_id</td>
+<td>Идентификатор платежа на стороне платежного сервиса</td>
+</tr>
+<tr>
+<td>prv_txn</td>
+<td>Идентификатор платежа в системе &quot;Моя МФО&quot;</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>Сумма платежа</td>
+</tr>
+<tr>
+<td>result</td>
+<td>Результат выполнения (0 - успешно; 1 - не успешно)</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>Описание ошибки</td>
+</tr>
+<tr>
+<td>СообщениеОбОшибке</td>
+<td>Описание ошибки, если она возникает</td>
+</tr>
+</tbody></table>
+<h1 id='-26'>Информационные сообщения</h1><h2 id='-27'>Получения статусов договоров (сделок)</h2><pre class="highlight plaintext"><code>POST http://192.168.0.1/MeMFOWork/hs/statusdeal`
+User-Agent: АдресСервера
+Content-Type: application/json
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"IDDeal1"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1_000000001"</span><span class="w">
+  </span><span class="s2">"IDDeal2"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1_000000012"</span><span class="w">
+  </span><span class="s2">"IDDeal3"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1_000000003"</span><span class="w">
+  </span><span class="s2">"IDDeal4"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1_000000010"</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+<blockquote>
+<p>Данный запрос возвращает строку в формате JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"ID1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"НомерСделки"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1_000000001"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ДатаСделки"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-21T10:15:30"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Статус"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Выдан"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"ID2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"НомерСделки"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1_000000012"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ДатаСделки"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-12T10:15:30"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Статус"</span><span class="p">:</span><span class="w"> </span><span class="s2">"На рассмотрении"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"ID3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"НомерСделки"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1_000000003"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ДатаСделки"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-23T10:15:30"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Статус"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Оплачен"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"ID3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"НомерСделки"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1_000000010"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ДатаСделки"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-20T10:15:30"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"Статус"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Предварительно одобрено"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+
+    </span><span class="s2">"КодОтвета"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">Данный</span><span class="w"> </span><span class="err">запрос</span><span class="w"> </span><span class="err">позволяет</span><span class="w"> </span><span class="err">получить</span><span class="w"> </span><span class="err">информацию</span><span class="w"> </span><span class="err">о</span><span class="w"> </span><span class="err">статусе</span><span class="w"> </span><span class="err">договора</span><span class="w"> </span><span class="err">(сделки)</span><span class="w"> </span><span class="err">по</span><span class="w"> </span><span class="err">ее</span><span class="w"> </span><span class="err">номеру.</span><span class="w">
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">HTTP-запрос</span><span class="w">
+
+</span><span class="err">`POST</span><span class="w"> </span><span class="err">http</span><span class="p">:</span><span class="err">//&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/statusdeal`</span><span class="w">
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">Параметры</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+
+</span><span class="err">Параметр</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Описание</span><span class="w">
+</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
+</span><span class="err">АдресСервера</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Адрес</span><span class="w"> </span><span class="err">сервера</span><span class="p">,</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">котором</span><span class="w"> </span><span class="err">опубликован</span><span class="w"> </span><span class="err">веб-сервис</span><span class="w">
+</span><span class="err">КаталогОпубликованногоHTTPСервиса</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Каталог</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">папке</span><span class="w"> </span><span class="err">wwwroot</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">опубликованным</span><span class="w"> </span><span class="err">сервисом</span><span class="w">
+</span><span class="err">IDDeal</span><span class="w"> </span><span class="err">(n)</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Номер</span><span class="w"> </span><span class="err">договора</span><span class="w"> </span><span class="err">займа</span><span class="w">
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">Возвращаемые</span><span class="w"> </span><span class="err">значения</span><span class="w">
+
+</span><span class="err">Параметр</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Описание</span><span class="w">
+</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
+</span><span class="err">НомерСделки</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Номер</span><span class="w"> </span><span class="err">договора</span><span class="w"> </span><span class="err">займа</span><span class="w">
+</span><span class="err">ДатаСделки</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Дата</span><span class="w"> </span><span class="err">договора</span><span class="w"> </span><span class="err">займа</span><span class="w">
+</span><span class="err">Статус</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Статус</span><span class="w"> </span><span class="err">договора</span><span class="w"> </span><span class="err">займа</span><span class="w">
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">Список</span><span class="w"> </span><span class="err">статусов</span><span class="w">
+
+</span><span class="err">Статус</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Описание</span><span class="w">
+</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
+</span><span class="err">Новый</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Заведена</span><span class="w"> </span><span class="err">заявка</span><span class="p">,</span><span class="w"> </span><span class="err">новый</span><span class="w"> </span><span class="err">займ</span><span class="w">
+</span><span class="err">На</span><span class="w"> </span><span class="err">рассмотрении</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Займ</span><span class="w"> </span><span class="err">находится</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">рассмотрении</span><span class="w">
+</span><span class="err">Одобрен</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">По</span><span class="w"> </span><span class="err">займу</span><span class="w"> </span><span class="err">приняли</span><span class="w"> </span><span class="err">положительное</span><span class="w"> </span><span class="err">решение</span><span class="w">
+</span><span class="err">Отказ</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">По</span><span class="w"> </span><span class="err">займу</span><span class="w"> </span><span class="err">приняли</span><span class="w"> </span><span class="err">отрицательное</span><span class="w"> </span><span class="err">решение</span><span class="w">
+</span><span class="err">Отменен</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Заемщик</span><span class="w"> </span><span class="err">отказался</span><span class="w"> </span><span class="err">от</span><span class="w"> </span><span class="err">займа</span><span class="w">
+</span><span class="err">Подписан</span><span class="w"> </span><span class="err">(дистанционно)</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Договор</span><span class="w"> </span><span class="err">подписан</span><span class="w"> </span><span class="err">дистанционно</span><span class="w">
+</span><span class="err">Ожидает</span><span class="w"> </span><span class="err">списания</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">р/с</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Ожидает</span><span class="w"> </span><span class="err">отправки</span><span class="w"> </span><span class="err">ден.средств</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">банковского</span><span class="w"> </span><span class="err">счета</span><span class="w"> </span><span class="err">организации</span><span class="w">
+</span><span class="err">Выдан</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Займ</span><span class="w"> </span><span class="err">выдан</span><span class="w">
+</span><span class="err">Внесен</span><span class="w"> </span><span class="err">аванс</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Внесен</span><span class="w"> </span><span class="err">аванс</span><span class="w"> </span><span class="err">раньше</span><span class="w"> </span><span class="err">даты</span><span class="w"> </span><span class="err">платежа</span><span class="w">
+</span><span class="err">Оплачен</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Займ</span><span class="w"> </span><span class="err">полностью</span><span class="w"> </span><span class="err">погашен</span><span class="w">
+</span><span class="err">У</span><span class="w"> </span><span class="err">коллектора</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Передан</span><span class="w"> </span><span class="err">коллектору</span><span class="w">
+</span><span class="err">На</span><span class="w"> </span><span class="err">текущем</span><span class="w"> </span><span class="err">контроле</span><span class="w"> </span><span class="err">у</span><span class="w"> </span><span class="err">коллектора</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Коллектор</span><span class="w"> </span><span class="err">контролирует</span><span class="w"> </span><span class="err">займ</span><span class="w">
+</span><span class="err">Готовится</span><span class="w"> </span><span class="err">выезд</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Коллектор</span><span class="w"> </span><span class="err">готовит</span><span class="w"> </span><span class="err">выезд</span><span class="w"> </span><span class="err">по</span><span class="w"> </span><span class="err">адресам</span><span class="w"> </span><span class="err">заемщика</span><span class="w">
+</span><span class="err">Признан</span><span class="w"> </span><span class="err">коллектором</span><span class="w"> </span><span class="err">как</span><span class="w"> </span><span class="err">безнадежный</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Коллектор</span><span class="w"> </span><span class="err">установил</span><span class="p">,</span><span class="w"> </span><span class="err">что</span><span class="w"> </span><span class="err">взыскать</span><span class="w"> </span><span class="err">займ</span><span class="w"> </span><span class="err">невозможно</span><span class="w">
+</span><span class="err">Ожидает</span><span class="w"> </span><span class="err">передачи</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">судебную</span><span class="w"> </span><span class="err">стадию</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Коллектор</span><span class="w"> </span><span class="err">определили</span><span class="w"> </span><span class="err">перспективу</span><span class="w"> </span><span class="err">взыскания</span><span class="w"> </span><span class="err">через</span><span class="w"> </span><span class="err">суд</span><span class="w">
+</span><span class="err">Передан</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">судебную</span><span class="w"> </span><span class="err">стадию</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Займ</span><span class="w"> </span><span class="err">передан</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">юридический</span><span class="w"> </span><span class="err">отдел</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">взыскание</span><span class="w"> </span><span class="err">через</span><span class="w"> </span><span class="err">суд</span><span class="w">
+</span><span class="err">Отправлена</span><span class="w"> </span><span class="err">претензия</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">По</span><span class="w"> </span><span class="err">займу</span><span class="w"> </span><span class="err">отправлена</span><span class="w"> </span><span class="err">претензия</span><span class="w">
+</span><span class="err">Оплачена</span><span class="w"> </span><span class="err">пошлина</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">По</span><span class="w"> </span><span class="err">займу</span><span class="w"> </span><span class="err">оплачена</span><span class="w"> </span><span class="err">пошлина</span><span class="w">
+</span><span class="err">В</span><span class="w"> </span><span class="err">суде</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">По</span><span class="w"> </span><span class="err">займу</span><span class="w"> </span><span class="err">отправлено</span><span class="w"> </span><span class="err">исковое</span><span class="w"> </span><span class="err">заявление</span><span class="w">
+</span><span class="err">Получен</span><span class="w"> </span><span class="err">исполнительный</span><span class="w"> </span><span class="err">лист</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Получили</span><span class="w"> </span><span class="err">исполнительный</span><span class="w"> </span><span class="err">лист</span><span class="w">
+</span><span class="err">Передан</span><span class="w"> </span><span class="err">судебному</span><span class="w"> </span><span class="err">приставу</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Исполнительный</span><span class="w"> </span><span class="err">лист</span><span class="w"> </span><span class="err">передан</span><span class="w"> </span><span class="err">судебному</span><span class="w"> </span><span class="err">приставу</span><span class="w">
+</span><span class="err">Продан</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Займ</span><span class="w"> </span><span class="err">продан</span><span class="w">
+</span><span class="err">Списан</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Займ</span><span class="w"> </span><span class="err">списан</span><span class="w">
+
+</span><span class="err">##</span><span class="w"> </span><span class="err">Получения</span><span class="w"> </span><span class="err">всех</span><span class="w"> </span><span class="err">номеров</span><span class="w"> </span><span class="err">договоров</span><span class="w"> </span><span class="err">(сделок)</span><span class="w"> </span><span class="err">по</span><span class="w"> </span><span class="err">одному</span><span class="w"> </span><span class="err">клиенту</span><span class="w">
+
+</span><span class="err">```HTTP</span><span class="w">
+</span><span class="err">GET</span><span class="w"> </span><span class="err">http</span><span class="p">:</span><span class="err">//</span><span class="mf">192.168</span><span class="err">.</span><span class="mf">0.1</span><span class="err">/MeMFOWork/hs/PS/NumberDeals/</span><span class="mi">0808761223</span><span class="err">`</span><span class="w">
+</span><span class="err">User-Agent</span><span class="p">:</span><span class="w"> </span><span class="err">АдресСервера</span><span class="w">
+</span><span class="err">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="err">application/json</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Данный запрос возвращает строку в формате JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Договоры"</span><span class="p">:</span><span class="w"> 
+    </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"НомерДоговора"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТСК000153"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Оплачен"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"НомерДоговора"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТСК000145"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Оплачен"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"НомерДоговора"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТСК000075"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Оплачен"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"НомерДоговора"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТСК000030"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Оплачен"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"НомерДоговора"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТСК000161"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Оплачен"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"СообщениеОбОшибке"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">Данный</span><span class="w"> </span><span class="err">запрос</span><span class="w"> </span><span class="err">позволяет</span><span class="w"> </span><span class="err">получить</span><span class="w"> </span><span class="err">информацию</span><span class="w"> </span><span class="err">о</span><span class="w"> </span><span class="err">всех</span><span class="w"> </span><span class="err">номерах</span><span class="w"> </span><span class="err">договоров</span><span class="w"> </span><span class="err">(сделкок).</span><span class="w">
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">HTTP-запрос</span><span class="w">
+
+</span><span class="err">`POST</span><span class="w"> </span><span class="err">http</span><span class="p">:</span><span class="err">//&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/PS/NumberDeals/&lt;Паспорт&gt;`</span><span class="w">
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">Параметры</span><span class="w"> </span><span class="err">запроса</span><span class="w">
+
+</span><span class="err">Параметр</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Описание</span><span class="w">
+</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
+</span><span class="err">АдресСервера</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Адрес</span><span class="w"> </span><span class="err">сервера</span><span class="p">,</span><span class="w"> </span><span class="err">на</span><span class="w"> </span><span class="err">котором</span><span class="w"> </span><span class="err">опубликован</span><span class="w"> </span><span class="err">веб-сервис</span><span class="w">
+</span><span class="err">КаталогОпубликованногоHTTPСервиса</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Каталог</span><span class="w"> </span><span class="err">в</span><span class="w"> </span><span class="err">папке</span><span class="w"> </span><span class="err">wwwroot</span><span class="w"> </span><span class="err">с</span><span class="w"> </span><span class="err">опубликованным</span><span class="w"> </span><span class="err">сервисом</span><span class="w">
+</span><span class="err">Паспорт</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Серия</span><span class="w"> </span><span class="err">и</span><span class="w"> </span><span class="err">номер</span><span class="w"> </span><span class="err">паспорта</span><span class="w"> </span><span class="err">без</span><span class="w"> </span><span class="err">пробелов</span><span class="w">
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">Возвращаемые</span><span class="w"> </span><span class="err">значения</span><span class="w">
+
+</span><span class="err">Параметр</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Описание</span><span class="w">
+</span><span class="err">---------</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">-----------</span><span class="w">
+</span><span class="err">НомерДоговора</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Номер</span><span class="w"> </span><span class="err">договора</span><span class="w"> </span><span class="err">займа</span><span class="w">
+</span><span class="err">Оплачен</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Статус</span><span class="w"> </span><span class="err">оплаты</span><span class="w"> </span><span class="err">займа</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="err">или</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="err">СообщениеОбОшибке</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Описание</span><span class="w"> </span><span class="err">ошибки</span><span class="p">,</span><span class="w"> </span><span class="err">если</span><span class="w"> </span><span class="err">она</span><span class="w"> </span><span class="err">возникает</span><span class="w">
+</span></code></pre><h1 id='errors'>Errors</h1>
 <aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
 
 <p>The Kittn API uses the following error codes:</p>
@@ -492,10 +1314,7 @@ Remember — a happy kitten is an authenticated kitten!
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="HTTP">HTTP</a>
           </div>
       </div>
     </div>
