@@ -534,7 +534,7 @@ Content-Type: application/json
 <td>Код заемщика</td>
 </tr>
 </tbody></table>
-<h2 id='otpravka-dogovora-v-formate-quot-pdf-quot-bez-podpisi'>Отправка договора в формате &quot;pdf&quot; (без подписи)</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/dealinpdf/0808223433/1_000000001`
+<h2 id='otpravka-dogovora-v-formate-quot-pdf-quot-bez-podpisi'>Отправка договора в формате &quot;pdf&quot; (без подписи)</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/dealinpdf/1_000000001/?pd=0808223433`
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
@@ -550,7 +550,7 @@ Content-Type: application/json
 </span></code></pre>
 <p>Данный запрос позволяет получить заполненную даными клиента форму договора в формате pdf до подписания его клиентом, для вывода на сайте (в личном кабинете).</p>
 <h3 id='http-zapros-2'>HTTP-запрос</h3>
-<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/dealinpdf/&lt;Паспорт&gt;/&lt;IDDeal&gt;</code></p>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/dealinpdf/&lt;IDDeal&gt;/?pd=&lt;Паспорт&gt;</code></p>
 <h3 id='parametry-zaprosa-2'>Параметры запроса</h3>
 <table><thead>
 <tr>
@@ -568,7 +568,7 @@ Content-Type: application/json
 </tr>
 <tr>
 <td>Паспорт</td>
-<td>Серия и номер паспорта без пробелов</td>
+<td>Серия и номер паспорта без пробелов (не обязательный)</td>
 </tr>
 <tr>
 <td>IDDeal</td>
@@ -858,7 +858,7 @@ Content-Type: application/json
 <td>Описание ошибки, если она возникает</td>
 </tr>
 </tbody></table>
-<h2 id='poluchenie-dannyh-o-zadolzhennosti-pri-oplate-cherez-sayt-dlya-ekvayringa'>Получение данных о задолженности при оплате через сайт (для эквайринга)</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/PS/deal/1_000000001/0808223433`
+<h2 id='poluchenie-dannyh-o-zadolzhennosti-pri-oplate-cherez-sayt-dlya-ekvayringa'>Получение данных о задолженности при оплате через сайт (для эквайринга)</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/PS/dealforps/1_000000001/?pd=0808223433`
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
@@ -877,7 +877,7 @@ Content-Type: application/json
 Если на сайте имеется возможность приема платежей, перед перенаправлением клиента на форму ввода данных банковской карты система позволяет предоставить клиенту проверочную информацию,
 которая позволяет ему узнать сумму, необходимую для внесения, а так же убедиться, что данная сумма действительно относится к нему, поскольку выводится его номер телефона и ФИО.</p>
 <h3 id='http-zapros-6'>HTTP-запрос</h3>
-<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/PS/dealforps/&lt;IDDeal&gt;/&lt;Паспорт&gt;</code></p>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/PS/dealforps/&lt;IDDeal&gt;/?pd=&lt;Паспорт&gt;</code></p>
 <h3 id='parametry-zaprosa-6'>Параметры запроса</h3>
 <table><thead>
 <tr>
@@ -899,7 +899,7 @@ Content-Type: application/json
 </tr>
 <tr>
 <td>Паспорт</td>
-<td>Серия и номер паспорта без пробелов</td>
+<td>Серия и номер паспорта без пробелов (не обязательный)</td>
 </tr>
 </tbody></table>
 <h3 id='vozvraschaemye-znacheniya-6'>Возвращаемые значения</h3>
@@ -1283,7 +1283,7 @@ Content-Type: application/json
 <td>Займ списан</td>
 </tr>
 </tbody></table>
-<h2 id='polucheniya-vseh-nomerov-dogovorov-sdelok-po-odnomu-klientu'>Получения всех номеров договоров (сделок) по одному клиенту</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/PS/NumberDeals/0808761223`
+<h2 id='polucheniya-vseh-nomerov-dogovorov-sdelok-po-odnomu-klientu'>Получения всех номеров договоров (сделок) по одному клиенту</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/NumberDeals/0808761223`
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
