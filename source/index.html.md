@@ -708,7 +708,7 @@ IDDeal (n) | Номер договора займа
 ## Получения всех номеров договоров (сделок) по одному клиенту
 
 ```HTTP
-GET http://192.168.0.1/MeMFOWork/hs/NumberDeals/0808761223`
+GET http://192.168.0.1/MeMFOWork/hs/NumbersDeals/0808761223`
 User-Agent: АдресСервера
 Content-Type: application/json
 ```
@@ -748,7 +748,7 @@ Content-Type: application/json
 
 ### HTTP-запрос
 
-`POST http://<АдресСервера>/<КаталогОпубликованногоHTTPСервиса>/hs/PS/NumberDeals/<Паспорт>`
+`GET http://<АдресСервера>/<КаталогОпубликованногоHTTPСервиса>/hs/NumbersDeals/<Паспорт>`
 
 ### Параметры запроса
 
