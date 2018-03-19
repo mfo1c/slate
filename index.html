@@ -270,6 +270,9 @@
             <a href="#informatsionnye-soobscheniya" class="toc-h1 toc-link" data-title="Информационные сообщения">Информационные сообщения</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#avtorizatsiya-klienta-na-sayte" class="toc-h2 toc-link" data-title="Информационные сообщения">Авторизация клиента на сайте</a>
+                  </li>
+                  <li>
                     <a href="#polucheniya-statusov-dogovorov-sdelok" class="toc-h2 toc-link" data-title="Информационные сообщения">Получения статусов договоров (сделок)</a>
                   </li>
                   <li>
@@ -1102,7 +1105,104 @@ Content-Type: application/xml
 <td>Описание ошибки, если она возникает</td>
 </tr>
 </tbody></table>
-<h1 id='informatsionnye-soobscheniya'>Информационные сообщения</h1><h2 id='polucheniya-statusov-dogovorov-sdelok'>Получения статусов договоров (сделок)</h2><pre class="highlight plaintext"><code>POST http://192.168.0.1/MeMFOWork/hs/statusdeal`
+<h1 id='informatsionnye-soobscheniya'>Информационные сообщения</h1><h2 id='avtorizatsiya-klienta-na-sayte'>Авторизация клиента на сайте</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/client/?phone=89111111111&amp;pass=Hgu32D11`
+User-Agent: АдресСервера
+Content-Type: application/json
+</code></pre>
+<blockquote>
+<p>Данный запрос возвращает строку в формате xml:</p>
+</blockquote>
+<pre class="highlight xml tab-xml"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;response&gt;</span>
+    <span class="nt">&lt;status&gt;</span>0<span class="nt">&lt;/status&gt;</span>
+    <span class="nt">&lt;errormessage&gt;&lt;/errormessage&gt;</span>
+    <span class="nt">&lt;fio&gt;</span>Иванов Иван Иванович<span class="nt">&lt;/fio&gt;</span>
+    <span class="nt">&lt;series&gt;</span>0101<span class="nt">&lt;/series&gt;</span>
+    <span class="nt">&lt;number&gt;</span>111222<span class="nt">&lt;/number&gt;</span>
+    <span class="nt">&lt;issued&gt;</span>МО УФМС России<span class="nt">&lt;/issued&gt;</span>
+    <span class="nt">&lt;dateissue&gt;</span>29.07.2008<span class="nt">&lt;/dateissuecode&gt;</span>
+    <span class="nt">&lt;code&gt;</span>270-000<span class="nt">&lt;/code&gt;</span>
+    <span class="nt">&lt;residence&gt;</span>190000, Санкт-Петербург, пр. Обуховской обороны д.86 кв.17<span class="nt">&lt;/residence&gt;</span>
+    <span class="nt">&lt;registration&gt;</span>190000, Санкт-Петербург, пр. Елизарова д.12 кв.271<span class="nt">&lt;/registration&gt;</span>
+    <span class="nt">&lt;placeofwork&gt;</span>ООО "Перспектива"<span class="nt">&lt;/placeofwork&gt;</span>
+<span class="nt">&lt;/response&gt;</span>
+</code></pre>
+<p>Данный запрос позволяет получить данные по клиенту по номеру телефона и хэш-паролю (параметр Pass).</p>
+
+<aside class="notice">
+Если хэш-пароль не задан, система его создает. В этом случае в запросе он не передается.
+</aside>
+<h3 id='http-zapros-9'>HTTP-запрос</h3>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/client/?phone=&lt;phone&gt;&amp;pass=&lt;pass&gt;</code></p>
+<h3 id='parametry-zaprosa-9'>Параметры запроса</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>phone</td>
+<td>Телефон клиента</td>
+</tr>
+<tr>
+<td>pass</td>
+<td>Хэш-пароль, формируется как phone + Пароль клиента в базе. Если не передается система формирует его и возвращает в ответе.</td>
+</tr>
+</tbody></table>
+<h3 id='vozvraschaemye-znacheniya-9'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>Статус: 0 - успешно; 2 - не успешно, не совпадает пароль; 11 - успешно, создан пароль; 1 - не найден контрагент или не задан СМС-шаблон</td>
+</tr>
+<tr>
+<td>errormessage</td>
+<td>Описание ошибки</td>
+</tr>
+<tr>
+<td>sum</td>
+<td>Сумма платежа</td>
+</tr>
+<tr>
+<td>fio</td>
+<td>ФИО клиента</td>
+</tr>
+<tr>
+<td>series</td>
+<td>Серия паспорта</td>
+</tr>
+<tr>
+<td>issued</td>
+<td>Орган выдачи паспорта</td>
+</tr>
+<tr>
+<td>dateissue</td>
+<td>Дата выдачи паспорта</td>
+</tr>
+<tr>
+<td>code</td>
+<td>Код подразделения</td>
+</tr>
+<tr>
+<td>residence</td>
+<td>Адрес по месту проживания</td>
+</tr>
+<tr>
+<td>registration</td>
+<td>Адрес по месту регистрации</td>
+</tr>
+<tr>
+<td>placeofwork</td>
+<td>Место работы</td>
+</tr>
+</tbody></table>
+<h2 id='polucheniya-statusov-dogovorov-sdelok'>Получения статусов договоров (сделок)</h2><pre class="highlight plaintext"><code>POST http://192.168.0.1/MeMFOWork/hs/statusdeal`
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1141,9 +1241,9 @@ Content-Type: application/json
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Данный запрос позволяет получить информацию о статусе договора (сделки) по ее номеру.</p>
-<h3 id='http-zapros-9'>HTTP-запрос</h3>
+<h3 id='http-zapros-10'>HTTP-запрос</h3>
 <p><code>POST http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/statusdeal</code></p>
-<h3 id='parametry-zaprosa-9'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-10'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1163,7 +1263,7 @@ Content-Type: application/json
 <td>Номер договора займа</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-9'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-10'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1318,9 +1418,9 @@ Content-Type: application/json
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Данный запрос позволяет получить информацию о всех номерах договоров (сделкок).</p>
-<h3 id='http-zapros-10'>HTTP-запрос</h3>
+<h3 id='http-zapros-11'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/NumbersDeals/&lt;Паспорт&gt;</code></p>
-<h3 id='parametry-zaprosa-10'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-11'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1340,7 +1440,7 @@ Content-Type: application/json
 <td>Серия и номер паспорта без пробелов</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-10'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-11'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
