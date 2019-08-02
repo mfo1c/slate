@@ -146,6 +146,22 @@ Content-Type: application/json
   "registrarion_house" : "11",
   "registrarion_building" : "3",
   "registrarion_apartment" : "58",
+  "files": [
+			{"filename":"Паспорт_страница_1", "bitmap":"0KLQtdGB0YIx"},
+			{"filename":"Паспорт_страница_2", "bitmap":"0KLQtdGB0YIy"}
+		   ]
+		   
+  //для передачи информации об автозалоге...
+  "car_model" : "Тойота Камри",  		
+  "car_issuedate" : "2006",
+  "car_price" : "600000",
+  "car_color" : "Белый"
+  "car_number" : "С238ОГ",
+  "car_vin" : "GDRT2890JH23GFDV22",
+  "sts_number" : "К34821",
+  "sts_issueby" : "Центральной МВД",
+  "pts_number" : "34 4321м",
+  "pts_issueby" : "Центральной МВД"
 }
 ```
 
