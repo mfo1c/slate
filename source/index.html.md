@@ -144,7 +144,7 @@ search: true
  
 # Вход в личный кабинет
 
-<a id="client">## Авторизация клиента в ЛК</a>
+## Авторизация клиента в <a id="client">ЛК</a>
 
 ```HTTP
 GET http://192.168.0.1/MeMFOWork/hs/client/?phone=89111111111&pass=Hgu32D11`
