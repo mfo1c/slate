@@ -271,7 +271,10 @@
                     <a href="#otpravka-ukazannogo-klientom-koda-asp-i-poluchenie-podpisannogo-dogovora-v-formate-quot-pdf-quot" class="toc-h2 toc-link" data-title="Выдача займов">Отправка указанного клиентом кода АСП и получение подписанного договора в формате "pdf"</a>
                   </li>
                   <li>
-                    <a href="#dobavlenie-bankovskoy-karty-2" class="toc-h2 toc-link" data-title="Выдача займов">Добавление банковской карты</a>
+                    <a href="#privyazka-karty-k-dogovoru" class="toc-h2 toc-link" data-title="Выдача займов">Привязка карты к договору</a>
+                  </li>
+                  <li>
+                    <a href="#otrazhenie-fakta-vydachi-zayma" class="toc-h2 toc-link" data-title="Выдача займов">Отражение факта выдачи займа</a>
                   </li>
               </ul>
           </li>
@@ -415,12 +418,14 @@
 <li>Сразу после авторизации выполняется http-метод <a href="#poluchenie-vseh-nomerov-dogovorov-sdelok-po-odnomu-klientu">NumbersDeals</a>, который получает все номера заявок и договоров текущего клиента.</li>
 <li>Далее может быть выполнен http-метод <a href="#proverka-statusa-dogovora-sdelki">StatusDeal</a>, который получает статусы заявок.</li>
 <li>Далее, если клиент входит в конкретную заявку/договор, может быть вызван http-метод <a href="#poluchenie-svodnyh-dannyh-o-summe-tekuschey-zadolzhennosti-po-konkretnomu-dogovoru-dlya-vyvoda-v-lichnom-kabinete">PS</a>, который отображает подробную информацию о текущей задолженности.</li>
+<li>Одним из этапов авторизации является получение списка банковских карт заемщика http-методом <a href="#poluchenie-spiska-bankovskih-kart-privyazannyh-k-klientu">card/info</a>.</li>
 <li>Если клиент подал заявку и она одобрена, он может ознакомиться с договором, который может быть получен http-методом <a href="#poluchenie-dogovora-v-formate-quot-pdf-quot-bez-podpisi">dealinpdf</a>.</li>
-<li>На этом этапе или раньше клиент должен привязать банковскую карту. Привязанная карта передается в базу &quot;Моя МФО&quot; при помощи http-метода <a href="#dobavlenie-bankovskoy-karty">card/attachtoclient</a> или card/attachtodeal.</li>
+<li>На этом этапе или раньше клиент должен добавить банковскую карту. Указанная карта передается в базу &quot;Моя МФО&quot; при помощи http-метода <a href="#dobavlenie-bankovskoy-karty">card/attachtoclient</a>.</li>
 <li>Если клиент готов подписать договор вызывается http-метод <a href="#zapros-na-poluchenie-koda-asp-analoga-sobstvenoruchnoy-podpisi-iz-quot-moya-mfo-quot">dealsign/code</a>, который отправляет сайту одноразовый код для подписания договора.
 Данный код, должен быть указан клиентом как аналог собственоручной подписи.</li>
 <li>Если клиент указал код, он должен быть отправлен сайтом на проверку в базу &quot;Моя МФО&quot; посредством http-метода <a href="#otpravka-ukazannogo-klientom-koda-asp-i-poluchenie-podpisannogo-dogovora-v-formate-quot-pdf-quot">dealsign/codereview</a>. Если код указан верно возвращается подписанный договор.</li>
-<li>Далее из системы &quot;Моя МФО&quot; происходит выдача займа. В случае, если выдача происходит за пределами системы &quot;Моя МФО&quot; зарегистрировать факт выдачи займа можно при помощи метода fixingissue.</li>
+<li>Поскольку у клиента могут быть несколько привязанных карт, необходимо указать карту для текущего договора для выдачи. Это выполняется вызовом http-метода <a href="#privyazka-karty-k-dogovoru">card/attachtodeal</a>.</li>
+<li>Далее из системы &quot;Моя МФО&quot; происходит выдача займа. В случае, если выдача происходит за пределами системы &quot;Моя МФО&quot; зарегистрировать факт выдачи займа можно при помощи метода <a href="##otrazhenie-fakta-vydachi-zayma">fixingissue</a>.</li>
 <li>Внесение оплаты по займу может быть произведено разными способами. Для сервисов, с которыми реализована прямая интеграция нет необходимости дополнительных настроек на стороне сайта, это такие сервисы как:</li>
 </ol>
 
@@ -436,10 +441,10 @@
 В этом случае используется метод <a href="#otrazhenie-v-sisteme-quot-moya-mfo-quot-poluchennogo-na-sayte-platezha-ekvayring">Payment/Site</a>.</p>
 
 <aside class="notice">
-В случае дополнительных вопросов вы всегда можете обратиться в службу технической поддержки по адресу: support@mfo1c.ru.
+В случае дополнительных вопросов вы всегда можете обратиться в службу технической поддержки по адресу: <b>support@mfo1c.ru</b>.
 </aside> 
  
-<h1 id='vhod-v-lichnyy-kabinet'>Вход в личный кабинет</h1><h2 id='avtorizatsiya-klienta-v-lk'>Авторизация клиента в ЛК</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/client/?phone=89111111111&amp;pass=Hgu32D11`
+<h1 id='vhod-v-lichnyy-kabinet'>Вход в личный кабинет</h1><h2 id='avtorizatsiya-klienta-v-lk'>Авторизация клиента в ЛК</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/client/?phone=89111111111&amp;pass=Hgu32D11
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
@@ -557,7 +562,7 @@ Content-Type: application/json
 <td>Дата запрета на подачу заявок</td>
 </tr>
 </tbody></table>
-<h2 id='poluchenie-vseh-nomerov-dogovorov-sdelok-po-odnomu-klientu'>Получение всех номеров договоров (сделок) по одному клиенту</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/NumbersDeals/0808761223`
+<h2 id='poluchenie-vseh-nomerov-dogovorov-sdelok-po-odnomu-klientu'>Получение всех номеров договоров (сделок) по одному клиенту</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/NumbersDeals/0808761223
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
@@ -634,7 +639,7 @@ Content-Type: application/json
 <td>Описание ошибки, если она возникает</td>
 </tr>
 </tbody></table>
-<h2 id='poluchenie-spiska-bankovskih-kart-privyazannyh-k-klientu'>Получение списка банковских карт привязанных к клиенту</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/card/info/?client=000000098`
+<h2 id='poluchenie-spiska-bankovskih-kart-privyazannyh-k-klientu'>Получение списка банковских карт привязанных к клиенту</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/card/info/?client=000000098
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
@@ -879,7 +884,7 @@ Content-Type: application/json
 <td>Код заемщика</td>
 </tr>
 </tbody></table>
-<h2 id='proverka-statusa-dogovora-sdelki'>Проверка статуса договора (сделки)</h2><pre class="highlight plaintext"><code>POST http://192.168.0.1/MeMFOWork/hs/statusdeal`
+<h2 id='proverka-statusa-dogovora-sdelki'>Проверка статуса договора (сделки)</h2><pre class="highlight plaintext"><code>POST http://192.168.0.1/MeMFOWork/hs/statusdeal
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1060,7 +1065,7 @@ Content-Type: application/json
 <td>Займ списан</td>
 </tr>
 </tbody></table>
-<h2 id='dobavlenie-bankovskoy-karty'>Добавление банковской карты</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/card/attachtoclient/?id=hfkd123g4453k34598d&amp;name=4321123456788765&amp;client=0000001233&amp;cardholder=IvanovIvan&amp;validity=112020&amp;service=Mandarinpay`
+<h2 id='dobavlenie-bankovskoy-karty'>Добавление банковской карты</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/card/attachtoclient/?id=hfkd123g4453k34598d&amp;name=4321123456788765&amp;client=0000001233&amp;cardholder=IvanovIvan&amp;validity=112020&amp;service=Mandarinpay
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
@@ -1130,7 +1135,7 @@ Content-Type: application/json
 <td>Описание ошибки, если она возникает</td>
 </tr>
 </tbody></table>
-<h2 id='poluchenie-dogovora-v-formate-quot-pdf-quot-bez-podpisi'>Получение договора в формате &quot;pdf&quot; (без подписи)</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/dealinpdf/1_000000001/?pd=0808223433`
+<h2 id='poluchenie-dogovora-v-formate-quot-pdf-quot-bez-podpisi'>Получение договора в формате &quot;pdf&quot; (без подписи)</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/dealinpdf/1_000000001/?pd=0808223433
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
@@ -1195,7 +1200,7 @@ Content-Type: application/json
 <td>Описание ошибки, если она возникает</td>
 </tr>
 </tbody></table>
-<h2 id='zapros-na-poluchenie-koda-asp-analoga-sobstvenoruchnoy-podpisi-iz-quot-moya-mfo-quot'>Запрос на получение кода АСП (аналога собственоручной подписи) из &quot;Моя МФО&quot;</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/dealsign/code/0808223433/1_000000001`
+<h2 id='zapros-na-poluchenie-koda-asp-analoga-sobstvenoruchnoy-podpisi-iz-quot-moya-mfo-quot'>Запрос на получение кода АСП (аналога собственоручной подписи) из &quot;Моя МФО&quot;</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/dealsign/code/0808223433/1_000000001
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
@@ -1260,7 +1265,7 @@ Content-Type: application/json
 <td>Описание ошибки, если она возникает</td>
 </tr>
 </tbody></table>
-<h2 id='otpravka-ukazannogo-klientom-koda-asp-i-poluchenie-podpisannogo-dogovora-v-formate-quot-pdf-quot'>Отправка указанного клиентом кода АСП и получение подписанного договора в формате &quot;pdf&quot;</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/dealsign/codereview/0808223433/1_000000001/1233243454354366234`
+<h2 id='otpravka-ukazannogo-klientom-koda-asp-i-poluchenie-podpisannogo-dogovora-v-formate-quot-pdf-quot'>Отправка указанного клиентом кода АСП и получение подписанного договора в формате &quot;pdf&quot;</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/dealsign/codereview/0808223433/1_000000001/1233243454354366234
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
@@ -1330,7 +1335,7 @@ Content-Type: application/json
 <td>Описание ошибки, если она возникает</td>
 </tr>
 </tbody></table>
-<h2 id='dobavlenie-bankovskoy-karty-2'>Добавление банковской карты</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/card/attachtodeal/?id=hfkd123g4453k34598d&amp;deal=1_000000001`
+<h2 id='privyazka-karty-k-dogovoru'>Привязка карты к договору</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/card/attachtodeal/?id=hfkd123g4453k34598d&amp;deal=1_000000001
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
@@ -1384,7 +1389,73 @@ Content-Type: application/json
 <td>Описание ошибки, если она возникает</td>
 </tr>
 </tbody></table>
-<h1 id='priem-platezhey'>Прием платежей</h1><h2 id='poluchenie-svodnyh-dannyh-o-summe-tekuschey-zadolzhennosti-po-konkretnomu-dogovoru-dlya-vyvoda-v-lichnom-kabinete'>Получение сводных данных о сумме текущей задолженности по конкретному договору для вывода в личном кабинете</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/PS/deal/1_000000001/0808223433`
+<h2 id='otrazhenie-fakta-vydachi-zayma'>Отражение факта выдачи займа</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/card/fixingissue/?client=000000098&amp;deal=1_000000001&amp;service=Mandarinpay&amp;idcard=hfkd123g4453k34598&amp;date
+User-Agent: АдресСервера
+Content-Type: application/json
+</code></pre>
+<blockquote>
+<p>Данный запрос возвращает строку в формате JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Результат"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Выдача сформирована"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Данный запрос позволяет отразить факт выдачи денежных средств по конкретному договору, если выдача производилась не через систему &quot;Моя МФО&quot;.</p>
+<h3 id='http-zapros-11'>HTTP-запрос</h3>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/card/fixingissue/?client=&lt;IDClient&gt;&amp;deal=&lt;НомерСделки&gt;&amp;service=&lt;Service&gt;&amp;idcard=&lt;ТокенКарты&gt;&amp;date=&lt;ДатаВыдачи&gt;</code></p>
+<h3 id='parametry-zaprosa-11'>Параметры запроса</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
+</tr>
+<tr>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
+</tr>
+<tr>
+<td>IDClient</td>
+<td>Идентификатор клиента</td>
+</tr>
+<tr>
+<td>ТокенКарты</td>
+<td>Токен карты в реестре сервиса выдачи</td>
+</tr>
+<tr>
+<td>НомерСделки</td>
+<td>Номер договора / сделки</td>
+</tr>
+<tr>
+<td>Service</td>
+<td>Платежный сервис</td>
+</tr>
+<tr>
+<td>ДатаВыдачи</td>
+<td>Дата выдачи денежных средст (необязательный), если не указан подставляется текущая дата</td>
+</tr>
+</tbody></table>
+<h3 id='vozvraschaemye-znacheniya-11'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Результат</td>
+<td>Сообщение об успешной привязке</td>
+</tr>
+<tr>
+<td>Error</td>
+<td>Описание ошибки, если она возникает</td>
+</tr>
+</tbody></table>
+<h1 id='priem-platezhey'>Прием платежей</h1><h2 id='poluchenie-svodnyh-dannyh-o-summe-tekuschey-zadolzhennosti-po-konkretnomu-dogovoru-dlya-vyvoda-v-lichnom-kabinete'>Получение сводных данных о сумме текущей задолженности по конкретному договору для вывода в личном кабинете</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/PS/deal/1_000000001/0808223433
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
@@ -1470,9 +1541,9 @@ Content-Type: application/json
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Данный запрос позволяет получить сводную информацию о текущих статьях задолженности, а так же текущий график платежей и историю внесенных оплат.</p>
-<h3 id='http-zapros-11'>HTTP-запрос</h3>
+<h3 id='http-zapros-12'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/PS/deal/&lt;IDDeal&gt;/&lt;Паспорт&gt;</code></p>
-<h3 id='parametry-zaprosa-11'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-12'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1496,7 +1567,7 @@ Content-Type: application/json
 <td>Серия и номер паспорта без пробелов</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-11'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-12'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1508,7 +1579,7 @@ Content-Type: application/json
 <td>Описание ошибки, если она возникает</td>
 </tr>
 </tbody></table>
-<h2 id='poluchenie-dannyh-o-zadolzhennosti-pri-oplate-cherez-sayt-dlya-ekvayringa'>Получение данных о задолженности при оплате через сайт (для эквайринга)</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/PS/dealforps/1_000000001/?pd=0808223433`
+<h2 id='poluchenie-dannyh-o-zadolzhennosti-pri-oplate-cherez-sayt-dlya-ekvayringa'>Получение данных о задолженности при оплате через сайт (для эквайринга)</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/PS/dealforps/1_000000001/?pd=0808223433
 User-Agent: АдресСервера
 Content-Type: application/json
 </code></pre>
@@ -1526,9 +1597,9 @@ Content-Type: application/json
 <p>Данный запрос позволяет получить информацию о сумме текущего платежа, а так же информацию для проверки заемщиком достоверности предоставленных сведений.
 Если на сайте имеется возможность приема платежей, перед перенаправлением клиента на форму ввода данных банковской карты система позволяет предоставить клиенту проверочную информацию,
 которая позволяет ему узнать сумму, необходимую для внесения, а так же убедиться, что данная сумма действительно относится к нему, поскольку выводится его номер телефона и ФИО.</p>
-<h3 id='http-zapros-12'>HTTP-запрос</h3>
+<h3 id='http-zapros-13'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/PS/dealforps/&lt;IDDeal&gt;/?pd=&lt;Паспорт&gt;</code></p>
-<h3 id='parametry-zaprosa-12'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-13'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1552,7 +1623,7 @@ Content-Type: application/json
 <td>Серия и номер паспорта без пробелов (не обязательный)</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-12'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-13'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1584,9 +1655,9 @@ Content-Type: application/xml
 <aside class="notice">
 Данный запрос отправляет сайт после получения информации от платежного сервиса о внесенном платеже.
 </aside>
-<h3 id='http-zapros-13'>HTTP-запрос</h3>
+<h3 id='http-zapros-14'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/Payment/Site/&lt;IDPayServise&gt;/?command=&lt;Command&gt;&amp;txn_id=&lt;osmp_txn_id&gt;&amp;txn_date=&lt;DatePayment&gt;&amp;account=&lt;IDDeal&gt;&amp;sum=&lt;Sum&gt;</code></p>
-<h3 id='parametry-zaprosa-13'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-14'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1626,7 +1697,7 @@ Content-Type: application/xml
 <td>Сумма платежа</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-13'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-14'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1678,9 +1749,9 @@ Content-Type: application/xml
 <aside class="notice">
 Данный запрос отправляет непосредственно платежный сервис.
 </aside>
-<h3 id='http-zapros-14'>HTTP-запрос</h3>
+<h3 id='http-zapros-15'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/Payment/&lt;PayServise&gt;/?command=&lt;Command&gt;&amp;txn_id=&lt;osmp_txn_id&gt;&amp;txn_date=&lt;DatePayment&gt;&amp;account=&lt;IDDeal&gt;&amp;sum=&lt;Sum&gt;</code></p>
-<h3 id='parametry-zaprosa-14'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-15'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1720,7 +1791,7 @@ Content-Type: application/xml
 <td>Сумма платежа</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-14'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-15'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
