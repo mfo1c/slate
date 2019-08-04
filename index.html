@@ -244,6 +244,9 @@
                   <li>
                     <a href="#poluchenie-vseh-nomerov-dogovorov-sdelok-po-odnomu-klientu" class="toc-h2 toc-link" data-title="Вход в личный кабинет">Получение всех номеров договоров (сделок) по одному клиенту</a>
                   </li>
+                  <li>
+                    <a href="#poluchenie-spiska-bankovskih-kart-privyazannyh-k-klientu" class="toc-h2 toc-link" data-title="Вход в личный кабинет">Получение списка банковских карт привязанных к клиенту</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -266,6 +269,9 @@
                   </li>
                   <li>
                     <a href="#otpravka-ukazannogo-klientom-koda-asp-i-poluchenie-podpisannogo-dogovora-v-formate-quot-pdf-quot" class="toc-h2 toc-link" data-title="Выдача займов">Отправка указанного клиентом кода АСП и получение подписанного договора в формате "pdf"</a>
+                  </li>
+                  <li>
+                    <a href="#dobavlenie-bankovskoy-karty-2" class="toc-h2 toc-link" data-title="Выдача займов">Добавление банковской карты</a>
                   </li>
               </ul>
           </li>
@@ -628,6 +634,77 @@ Content-Type: application/json
 <td>Описание ошибки, если она возникает</td>
 </tr>
 </tbody></table>
+<h2 id='poluchenie-spiska-bankovskih-kart-privyazannyh-k-klientu'>Получение списка банковских карт привязанных к клиенту</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/card/info/?client=000000098`
+User-Agent: АдресСервера
+Content-Type: application/json
+</code></pre>
+<blockquote>
+<p>Данный запрос возвращает строку в формате JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТСК000153"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234 2342 1112 8644"</span><span class="w">
+            </span><span class="s2">"CardHolder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ivan Ivanov"</span><span class="w">
+            </span><span class="s2">"Validity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/2020"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ТСК000153"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"CardNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234 2342 1112 8644"</span><span class="w">
+            </span><span class="s2">"CardHolder"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ivan Ivanov"</span><span class="w">
+            </span><span class="s2">"Validity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"01/2020"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Данный запрос позволяет получить информацию о всех номерах договоров (сделок).</p>
+<h3 id='http-zapros-3'>HTTP-запрос</h3>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/card/info/?client=&lt;IDClient&gt;</code></p>
+<h3 id='parametry-zaprosa-3'>Параметры запроса</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
+</tr>
+<tr>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
+</tr>
+<tr>
+<td>IDClient</td>
+<td>Идентификатор клиента</td>
+</tr>
+</tbody></table>
+<h3 id='vozvraschaemye-znacheniya-3'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>Токен карты в сервисе выдачи</td>
+</tr>
+<tr>
+<td>CardNumber</td>
+<td>Номер банковской карты</td>
+</tr>
+<tr>
+<td>CardHolder</td>
+<td>Держатель карты (имя на карте)</td>
+</tr>
+<tr>
+<td>Validity</td>
+<td>Срок действия</td>
+</tr>
+</tbody></table>
 <h1 id='vydacha-zaymov'>Выдача займов</h1><h2 id='otpravka-zayavki'>Отправка заявки</h2><pre class="highlight plaintext"><code>POST http://АдресСервера/КаталогОпубликованногоHTTPСервиса/hs/Request/
 User-Agent: АдресСервера
 Content-Type: application/json
@@ -703,9 +780,9 @@ Content-Type: application/json
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Данный запрос позволяет загружать заявки с сайта компании или других ресурсов (лидогенераторов) в базу &quot;Моя МФО&quot;</p>
-<h3 id='http-zapros-3'>HTTP-запрос</h3>
+<h3 id='http-zapros-4'>HTTP-запрос</h3>
 <p><code>POST http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/Request/</code></p>
-<h3 id='parametry-zaprosa-3'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-4'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -778,7 +855,7 @@ Content-Type: application/json
 В системе предоставляется загрузка любых доступных полей и назначение им соответствующих тегов при передаче.
 Данный функционал настраивается в системе "Моя МФО" в разделе <b>Настройки "Моя МФО"\Общие\Обмен с сайтом\Онлайн-заявки</b>
 </aside>
-<h3 id='vozvraschaemye-znacheniya-3'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-4'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -841,9 +918,9 @@ Content-Type: application/json
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Данный запрос позволяет получить информацию о статусе договора (сделки) по ее номеру.</p>
-<h3 id='http-zapros-4'>HTTP-запрос</h3>
+<h3 id='http-zapros-5'>HTTP-запрос</h3>
 <p><code>POST http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/statusdeal</code></p>
-<h3 id='parametry-zaprosa-4'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-5'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -863,7 +940,7 @@ Content-Type: application/json
 <td>Номер договора займа</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-4'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-5'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -995,9 +1072,9 @@ Content-Type: application/json
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Данный запрос позволяет добавить банковскую карту клиенту в системе &quot;Моя МФО&quot; для последующей выдачи.</p>
-<h3 id='http-zapros-5'>HTTP-запрос</h3>
+<h3 id='http-zapros-6'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/card/attachtoclient/?id=&lt;ТокенКарты&gt;&amp;name=&lt;НомерКарты&gt;&amp;client=&lt;IDКлиента&gt;&amp;cardholder=&lt;ДержательКарты&gt;&amp;validity=&lt;СрокДействия&gt;&amp;service=&lt;СервисВыдачи&gt;</code></p>
-<h3 id='parametry-zaprosa-5'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-6'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1037,7 +1114,7 @@ Content-Type: application/json
 <td>Платежный сервис через который производится выдача. Название должно совпадать с названием в базе &quot;Моя МФО&quot; с реквизитом &quot;Платежный сервис&quot;.</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-5'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-6'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1068,9 +1145,9 @@ Content-Type: application/json
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Данный запрос позволяет получить заполненную данными клиента форму договора в формате pdf до подписания его клиентом, для вывода в личном кабинете для ознакомления.</p>
-<h3 id='http-zapros-6'>HTTP-запрос</h3>
+<h3 id='http-zapros-7'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/dealinpdf/&lt;IDDeal&gt;/?pd=&lt;Паспорт&gt;</code></p>
-<h3 id='parametry-zaprosa-6'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-7'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1094,7 +1171,7 @@ Content-Type: application/json
 <td>Номер договора займа</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-6'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-7'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1133,9 +1210,9 @@ Content-Type: application/json
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Данный запрос позволяет получить код АСП (аналог собственоручной подписи) с целью его отправки клиенту в виде СМС и ввода им в личном кабинете для подписания договора.</p>
-<h3 id='http-zapros-7'>HTTP-запрос</h3>
+<h3 id='http-zapros-8'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/dealsign/code/&lt;Паспорт&gt;/&lt;IDDeal&gt;</code></p>
-<h3 id='parametry-zaprosa-7'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-8'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1159,7 +1236,7 @@ Content-Type: application/json
 <td>Номер договора займа</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-7'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-8'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1199,9 +1276,9 @@ Content-Type: application/json
 </span></code></pre>
 <p>Данный запрос позволяет отправить в базу &quot;Моя МФО&quot; код АСП (аналог собственоручной подписи), который клиент ввел на стороне сайта и в случае, если код введен верно вернуть подписанный данной АСП договор в формате pdf.
 В результате запроса статус займа меняется на &quot;Подисан (дистанционно)&quot;.</p>
-<h3 id='http-zapros-8'>HTTP-запрос</h3>
+<h3 id='http-zapros-9'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/dealsign/codereview/&lt;Паспорт&gt;/&lt;IDDeal&gt;/&lt;CodeSHA256&gt;</code></p>
-<h3 id='parametry-zaprosa-8'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-9'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1229,7 +1306,7 @@ Content-Type: application/json
 <td>Строка: &quot;IDClient + IDDeal + Код АСП&quot;, зашифрованная алгоритмом SHA256</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-8'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-9'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1250,6 +1327,60 @@ Content-Type: application/json
 </tr>
 <tr>
 <td>СообщениеОбОшибке</td>
+<td>Описание ошибки, если она возникает</td>
+</tr>
+</tbody></table>
+<h2 id='dobavlenie-bankovskoy-karty-2'>Добавление банковской карты</h2><pre class="highlight plaintext"><code>GET http://192.168.0.1/MeMFOWork/hs/card/attachtodeal/?id=hfkd123g4453k34598d&amp;deal=1_000000001`
+User-Agent: АдресСервера
+Content-Type: application/json
+</code></pre>
+<blockquote>
+<p>Данный запрос возвращает строку в формате JSON:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"Результат"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Карта привязана"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Данный запрос позволяет указать банковскую карту для выдачи по конкретному договору в системе &quot;Моя МФО&quot;.</p>
+<h3 id='http-zapros-10'>HTTP-запрос</h3>
+<p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/card/attachtodeal/?id=&lt;ТокенКарты&gt;&amp;deal=&lt;НомерСделки&gt;</code></p>
+<h3 id='parametry-zaprosa-10'>Параметры запроса</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>АдресСервера</td>
+<td>Адрес сервера, на котором опубликован веб-сервис</td>
+</tr>
+<tr>
+<td>КаталогОпубликованногоHTTPСервиса</td>
+<td>Каталог в папке wwwroot с опубликованным сервисом</td>
+</tr>
+<tr>
+<td>ТокенКарты</td>
+<td>Токен карты в реестре сервиса выдачи</td>
+</tr>
+<tr>
+<td>НомерСделки</td>
+<td>Номер договора / сделки</td>
+</tr>
+</tbody></table>
+<h3 id='vozvraschaemye-znacheniya-10'>Возвращаемые значения</h3>
+<table><thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Результат</td>
+<td>Сообщение об успешной привязке</td>
+</tr>
+<tr>
+<td>Error</td>
 <td>Описание ошибки, если она возникает</td>
 </tr>
 </tbody></table>
@@ -1339,9 +1470,9 @@ Content-Type: application/json
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Данный запрос позволяет получить сводную информацию о текущих статьях задолженности, а так же текущий график платежей и историю внесенных оплат.</p>
-<h3 id='http-zapros-9'>HTTP-запрос</h3>
+<h3 id='http-zapros-11'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/PS/deal/&lt;IDDeal&gt;/&lt;Паспорт&gt;</code></p>
-<h3 id='parametry-zaprosa-9'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-11'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1365,7 +1496,7 @@ Content-Type: application/json
 <td>Серия и номер паспорта без пробелов</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-9'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-11'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1395,9 +1526,9 @@ Content-Type: application/json
 <p>Данный запрос позволяет получить информацию о сумме текущего платежа, а так же информацию для проверки заемщиком достоверности предоставленных сведений.
 Если на сайте имеется возможность приема платежей, перед перенаправлением клиента на форму ввода данных банковской карты система позволяет предоставить клиенту проверочную информацию,
 которая позволяет ему узнать сумму, необходимую для внесения, а так же убедиться, что данная сумма действительно относится к нему, поскольку выводится его номер телефона и ФИО.</p>
-<h3 id='http-zapros-10'>HTTP-запрос</h3>
+<h3 id='http-zapros-12'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/PS/dealforps/&lt;IDDeal&gt;/?pd=&lt;Паспорт&gt;</code></p>
-<h3 id='parametry-zaprosa-10'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-12'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1421,7 +1552,7 @@ Content-Type: application/json
 <td>Серия и номер паспорта без пробелов (не обязательный)</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-10'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-12'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1453,9 +1584,9 @@ Content-Type: application/xml
 <aside class="notice">
 Данный запрос отправляет сайт после получения информации от платежного сервиса о внесенном платеже.
 </aside>
-<h3 id='http-zapros-11'>HTTP-запрос</h3>
+<h3 id='http-zapros-13'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/Payment/Site/&lt;IDPayServise&gt;/?command=&lt;Command&gt;&amp;txn_id=&lt;osmp_txn_id&gt;&amp;txn_date=&lt;DatePayment&gt;&amp;account=&lt;IDDeal&gt;&amp;sum=&lt;Sum&gt;</code></p>
-<h3 id='parametry-zaprosa-11'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-13'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1495,7 +1626,7 @@ Content-Type: application/xml
 <td>Сумма платежа</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-11'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-13'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1547,9 +1678,9 @@ Content-Type: application/xml
 <aside class="notice">
 Данный запрос отправляет непосредственно платежный сервис.
 </aside>
-<h3 id='http-zapros-12'>HTTP-запрос</h3>
+<h3 id='http-zapros-14'>HTTP-запрос</h3>
 <p><code>GET http://&lt;АдресСервера&gt;/&lt;КаталогОпубликованногоHTTPСервиса&gt;/hs/Payment/&lt;PayServise&gt;/?command=&lt;Command&gt;&amp;txn_id=&lt;osmp_txn_id&gt;&amp;txn_date=&lt;DatePayment&gt;&amp;account=&lt;IDDeal&gt;&amp;sum=&lt;Sum&gt;</code></p>
-<h3 id='parametry-zaprosa-12'>Параметры запроса</h3>
+<h3 id='parametry-zaprosa-14'>Параметры запроса</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
@@ -1589,7 +1720,7 @@ Content-Type: application/xml
 <td>Сумма платежа</td>
 </tr>
 </tbody></table>
-<h3 id='vozvraschaemye-znacheniya-12'>Возвращаемые значения</h3>
+<h3 id='vozvraschaemye-znacheniya-14'>Возвращаемые значения</h3>
 <table><thead>
 <tr>
 <th>Параметр</th>
