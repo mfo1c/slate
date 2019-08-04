@@ -121,13 +121,15 @@ search: true
 3. Сразу после авторизации выполняется http-метод [NumbersDeals](#poluchenie-vseh-nomerov-dogovorov-sdelok-po-odnomu-klientu), который получает все номера заявок и договоров текущего клиента.
 4. Далее может быть выполнен http-метод [StatusDeal](#proverka-statusa-dogovora-sdelki), который получает статусы заявок.
 5. Далее, если клиент входит в конкретную заявку/договор, может быть вызван http-метод [PS](#poluchenie-svodnyh-dannyh-o-summe-tekuschey-zadolzhennosti-po-konkretnomu-dogovoru-dlya-vyvoda-v-lichnom-kabinete), который отображает подробную информацию о текущей задолженности.
-6. Если клиент подал заявку и она одобрена, он может ознакомиться с договором, который может быть получен http-методом [dealinpdf](#poluchenie-dogovora-v-formate-quot-pdf-quot-bez-podpisi).
-7. На этом этапе или раньше клиент должен привязать банковскую карту. Привязанная карта передается в базу "Моя МФО" при помощи http-метода [card/attachtoclient](#dobavlenie-bankovskoy-karty) или card/attachtodeal.
-8. Если клиент готов подписать договор вызывается http-метод [dealsign/code](#zapros-na-poluchenie-koda-asp-analoga-sobstvenoruchnoy-podpisi-iz-quot-moya-mfo-quot), который отправляет сайту одноразовый код для подписания договора.
+6. Одним из этапов авторизации является получение списка банковских карт заемщика http-методом [card/info](#poluchenie-spiska-bankovskih-kart-privyazannyh-k-klientu).
+7. Если клиент подал заявку и она одобрена, он может ознакомиться с договором, который может быть получен http-методом [dealinpdf](#poluchenie-dogovora-v-formate-quot-pdf-quot-bez-podpisi).
+8. На этом этапе или раньше клиент должен добавить банковскую карту. Указанная карта передается в базу "Моя МФО" при помощи http-метода [card/attachtoclient](#dobavlenie-bankovskoy-karty).
+9. Если клиент готов подписать договор вызывается http-метод [dealsign/code](#zapros-na-poluchenie-koda-asp-analoga-sobstvenoruchnoy-podpisi-iz-quot-moya-mfo-quot), который отправляет сайту одноразовый код для подписания договора.
 Данный код, должен быть указан клиентом как аналог собственоручной подписи.
-9. Если клиент указал код, он должен быть отправлен сайтом на проверку в базу "Моя МФО" посредством http-метода [dealsign/codereview](#otpravka-ukazannogo-klientom-koda-asp-i-poluchenie-podpisannogo-dogovora-v-formate-quot-pdf-quot). Если код указан верно возвращается подписанный договор.
-10. Далее из системы "Моя МФО" происходит выдача займа. В случае, если выдача происходит за пределами системы "Моя МФО" зарегистрировать факт выдачи займа можно при помощи метода fixingissue.
-11. Внесение оплаты по займу может быть произведено разными способами. Для сервисов, с которыми реализована прямая интеграция нет необходимости дополнительных настроек на стороне сайта, это такие сервисы как:
+10. Если клиент указал код, он должен быть отправлен сайтом на проверку в базу "Моя МФО" посредством http-метода [dealsign/codereview](#otpravka-ukazannogo-klientom-koda-asp-i-poluchenie-podpisannogo-dogovora-v-formate-quot-pdf-quot). Если код указан верно возвращается подписанный договор.
+11. Поскольку у клиента могут быть несколько привязанных карт, необходимо указать карту для текущего договора для выдачи. Это выполняется вызовом http-метода [card/attachtodeal](#privyazka-karty-k-dogovoru).
+12. Далее из системы "Моя МФО" происходит выдача займа. В случае, если выдача происходит за пределами системы "Моя МФО" зарегистрировать факт выдачи займа можно при помощи метода [fixingissue](##otrazhenie-fakta-vydachi-zayma).
+13. Внесение оплаты по займу может быть произведено разными способами. Для сервисов, с которыми реализована прямая интеграция нет необходимости дополнительных настроек на стороне сайта, это такие сервисы как:
 
 - Золотая корона
 - Киви
@@ -139,7 +141,7 @@ search: true
 В этом случае используется метод [Payment/Site](#otrazhenie-v-sisteme-quot-moya-mfo-quot-poluchennogo-na-sayte-platezha-ekvayring).
 
 <aside class="notice">
-В случае дополнительных вопросов вы всегда можете обратиться в службу технической поддержки по адресу: support@mfo1c.ru.
+В случае дополнительных вопросов вы всегда можете обратиться в службу технической поддержки по адресу: <b>support@mfo1c.ru</b>.
 </aside> 
  
 # Вход в личный кабинет
@@ -147,7 +149,7 @@ search: true
 ## Авторизация клиента в ЛК
 
 ```HTTP
-GET http://192.168.0.1/MeMFOWork/hs/client/?phone=89111111111&pass=Hgu32D11`
+GET http://192.168.0.1/MeMFOWork/hs/client/?phone=89111111111&pass=Hgu32D11
 User-Agent: АдресСервера
 Content-Type: application/json
 ```
@@ -216,7 +218,7 @@ dateofban | Дата запрета на подачу заявок
 ## Получение всех номеров договоров (сделок) по одному клиенту
 
 ```HTTP
-GET http://192.168.0.1/MeMFOWork/hs/NumbersDeals/0808761223`
+GET http://192.168.0.1/MeMFOWork/hs/NumbersDeals/0808761223
 User-Agent: АдресСервера
 Content-Type: application/json
 ```
@@ -277,7 +279,7 @@ Content-Type: application/json
 ## Получение списка банковских карт привязанных к клиенту
 
 ```HTTP
-GET http://192.168.0.1/MeMFOWork/hs/card/info/?client=000000098`
+GET http://192.168.0.1/MeMFOWork/hs/card/info/?client=000000098
 User-Agent: АдресСервера
 Content-Type: application/json
 ```
@@ -457,7 +459,7 @@ IDClient | Код заемщика
 ## Проверка статуса договора (сделки)
 
 ```HTTP
-POST http://192.168.0.1/MeMFOWork/hs/statusdeal`
+POST http://192.168.0.1/MeMFOWork/hs/statusdeal
 User-Agent: АдресСервера
 Content-Type: application/json
 ```
@@ -553,7 +555,7 @@ IDDeal (n) | Номер договора займа
 ## Добавление банковской карты
 
 ```HTTP
-GET http://192.168.0.1/MeMFOWork/hs/card/attachtoclient/?id=hfkd123g4453k34598d&name=4321123456788765&client=0000001233&cardholder=IvanovIvan&validity=112020&service=Mandarinpay`
+GET http://192.168.0.1/MeMFOWork/hs/card/attachtoclient/?id=hfkd123g4453k34598d&name=4321123456788765&client=0000001233&cardholder=IvanovIvan&validity=112020&service=Mandarinpay
 User-Agent: АдресСервера
 Content-Type: application/json
 ```
@@ -595,7 +597,7 @@ Error | Описание ошибки, если она возникает
 ## Получение договора в формате "pdf" (без подписи)
 
 ```HTTP
-GET http://192.168.0.1/MeMFOWork/hs/dealinpdf/1_000000001/?pd=0808223433`
+GET http://192.168.0.1/MeMFOWork/hs/dealinpdf/1_000000001/?pd=0808223433
 User-Agent: АдресСервера
 Content-Type: application/json
 ```
@@ -638,7 +640,7 @@ Code | Код АСП
 ## Запрос на получение кода АСП (аналога собственоручной подписи) из "Моя МФО"
 
 ```HTTP
-GET http://192.168.0.1/MeMFOWork/hs/dealsign/code/0808223433/1_000000001`
+GET http://192.168.0.1/MeMFOWork/hs/dealsign/code/0808223433/1_000000001
 User-Agent: АдресСервера
 Content-Type: application/json
 ```
@@ -681,7 +683,7 @@ Code | Код АСП
 ## Отправка указанного клиентом кода АСП и получение подписанного договора в формате "pdf"
 
 ```HTTP
-GET http://192.168.0.1/MeMFOWork/hs/dealsign/codereview/0808223433/1_000000001/1233243454354366234`
+GET http://192.168.0.1/MeMFOWork/hs/dealsign/codereview/0808223433/1_000000001/1233243454354366234
 User-Agent: АдресСервера
 Content-Type: application/json
 ```
@@ -723,10 +725,10 @@ IDDeal | Номер заявки (договора)
 Code | Код АСП
 СообщениеОбОшибке | Описание ошибки, если она возникает
 
-## Добавление банковской карты
+## Привязка карты к договору
 
 ```HTTP
-GET http://192.168.0.1/MeMFOWork/hs/card/attachtodeal/?id=hfkd123g4453k34598d&deal=1_000000001`
+GET http://192.168.0.1/MeMFOWork/hs/card/attachtodeal/?id=hfkd123g4453k34598d&deal=1_000000001
 User-Agent: АдресСервера
 Content-Type: application/json
 ```
@@ -761,12 +763,53 @@ Content-Type: application/json
 Результат | Сообщение об успешной привязке
 Error | Описание ошибки, если она возникает
 
+## Отражение факта выдачи займа
+
+```HTTP
+GET http://192.168.0.1/MeMFOWork/hs/card/fixingissue/?client=000000098&deal=1_000000001&service=Mandarinpay&idcard=hfkd123g4453k34598&date
+User-Agent: АдресСервера
+Content-Type: application/json
+```
+
+> Данный запрос возвращает строку в формате JSON:
+
+```json
+{
+	"Результат": "Выдача сформирована"
+}
+```
+
+Данный запрос позволяет отразить факт выдачи денежных средств по конкретному договору, если выдача производилась не через систему "Моя МФО".
+
+### HTTP-запрос
+
+`GET http://<АдресСервера>/<КаталогОпубликованногоHTTPСервиса>/hs/card/fixingissue/?client=<IDClient>&deal=<НомерСделки>&service=<Service>&idcard=<ТокенКарты>&date=<ДатаВыдачи>`
+
+### Параметры запроса
+
+Параметр | Описание
+--------- | -----------
+АдресСервера | Адрес сервера, на котором опубликован веб-сервис
+КаталогОпубликованногоHTTPСервиса | Каталог в папке wwwroot с опубликованным сервисом
+IDClient | Идентификатор клиента
+ТокенКарты | Токен карты в реестре сервиса выдачи
+НомерСделки | Номер договора / сделки
+Service | Платежный сервис
+ДатаВыдачи | Дата выдачи денежных средст (необязательный), если не указан подставляется текущая дата
+
+### Возвращаемые значения
+
+Параметр | Описание
+--------- | -----------
+Результат | Сообщение об успешной привязке
+Error | Описание ошибки, если она возникает
+
 # Прием платежей
 
 ## Получение сводных данных о сумме текущей задолженности по конкретному договору для вывода в личном кабинете
 
 ```HTTP
-GET http://192.168.0.1/MeMFOWork/hs/PS/deal/1_000000001/0808223433`
+GET http://192.168.0.1/MeMFOWork/hs/PS/deal/1_000000001/0808223433
 User-Agent: АдресСервера
 Content-Type: application/json
 ```
@@ -877,7 +920,7 @@ IDDeal | Номер договора займа
 ## Получение данных о задолженности при оплате через сайт (для эквайринга)
 
 ```HTTP
-GET http://192.168.0.1/MeMFOWork/hs/PS/dealforps/1_000000001/?pd=0808223433`
+GET http://192.168.0.1/MeMFOWork/hs/PS/dealforps/1_000000001/?pd=0808223433
 User-Agent: АдресСервера
 Content-Type: application/json
 ```
