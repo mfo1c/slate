@@ -374,10 +374,19 @@ Content-Type: application/json
   "registrarion_house" : "11",
   "registrarion_building" : "3",
   "registrarion_apartment" : "58",
-  "files": [
-			{"filename":"Паспорт_страница_1", "bitmap":"0KLQtdGB0YIx"},
-			{"filename":"Паспорт_страница_2", "bitmap":"0KLQtdGB0YIy"}
-		   ]
+  "files":	[
+				{"filename":"Паспорт_страница_1", "bitmap":"0KLQtdGB0YIx"},
+				{"filename":"Паспорт_страница_2", "bitmap":"0KLQtdGB0YIy"}
+			]
+  "photos":     
+    {
+        "method": "add", //"replace" в случае "replace" все изображения будут замещаться.      
+        "items":
+            [
+                {"name": "a.jpg", "main": true, "data": "data:image/jpeg;base64"}, //в случае установки флага main это фото будет считаться основным фото заемщика
+                {"name": "b.jpg", "data": "data:image/jpeg;base64"}         
+            ]   
+    }
 		   
   //для передачи информации об автозалоге...
   "car_model" : "Тойота Камри",  		
